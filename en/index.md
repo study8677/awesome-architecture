@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Awesome Architecture"
   text: "Think like an architect"
-  tagline: "Writing code is disappearing; judgment is what's getting valuable. 26 architecture-thinking chapters + 25 real-system architecture maps + 6 end-to-end cases — architecture only, no syntax."
+  tagline: "Writing code is disappearing; judgment is what's getting valuable. 34 architecture-thinking chapters + 25 real-system architecture maps + 6 end-to-end cases — architecture only, no syntax."
   actions:
     - theme: brand
       text: Start the tutorial →
@@ -22,7 +22,7 @@ hero:
 features:
   - icon: 🧠
     title: Judgment, not syntax
-    details: No language or framework. A transferable, durable way of thinking — requirements → constraints → quality attributes → trade-offs.
+    details: No language or framework lock-in. A transferable way of thinking — requirements → constraints → quality attributes → trade-offs — now applied to technology stack selection.
   - icon: 🗺️
     title: 25 architecture maps
     details: From e-commerce, social feeds, chat and video to AI gateways, RAG and inference serving — each explains why it's built that way and where it breaks.
@@ -37,7 +37,7 @@ features:
     details: Each template links to real open-source projects and engineering papers (vLLM, LiteLLM, TigerBeetle, Uber H3, Figma…).
 ---
 
-> ✅ **Fully bilingual.** All 26 tutorial chapters, 25 templates, and the first 6 cases are available in English — use the language switch (top-right) or browse `en/` in the repo. [Contributions welcome](https://github.com/study8677/awesome-architecture).
+> ✅ **Fully bilingual.** All 34 tutorial chapters, 25 templates, and the first 6 cases are available in English — use the language switch (top-right) or browse `en/` in the repo. [Contributions welcome](https://github.com/study8677/awesome-architecture).
 
 ## 🗺️ Browse all 25 architecture maps
 
@@ -48,6 +48,10 @@ Click a category to filter, then click any card to jump to that template's archi
 ## 🧪 Read the first 6 cases
 
 The case track is not more templates. It is a full product walkthrough: starting architecture, quantified trigger signals, ADRs, data flow, failure fallbacks, and quick checks. 👉 [Enter the case track](/en/cases/README)
+
+## 🧰 Learn technology stack selection
+
+The new technology stack selection track (27–34) is not a framework tutorial. It teaches the architectural judgment behind language, databases, cache, APIs, deployment, observability, and AI infrastructure. 👉 [Start from Chapter 27](/en/tutorial/27-编程语言与后端框架选型)
 
 ## ⚖️ Architecture is a series of forks in the road
 

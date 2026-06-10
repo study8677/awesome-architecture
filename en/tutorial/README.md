@@ -18,7 +18,7 @@ This tutorial is the missing lesson on judgment.
 
 ## Learning path
 
-The tutorial has six parts. **Reading in order is recommended**, but each chapter also stands on its own.
+The tutorial is organized as a sequence of tracks. **Reading in order is recommended**, but each chapter also stands on its own.
 
 ### Part 1 · Build the mindset (01–03) — a new way of seeing systems
 
@@ -95,6 +95,23 @@ Foundations + advanced teach *how to judge*; **the practice track teaches how to
 
 ---
 
+## 🧰 Technology stack selection track (27–34) — turn "what tech to use" into architecture judgment
+
+**Prerequisite: foundations + advanced track.** This is not a framework tutorial or a tool ranking. It applies [Chapter 02](./02-架构师的思考框架)'s "requirements → constraints → quality attributes → trade-offs" to languages, databases, cache, APIs, deployment, observability, and AI infrastructure.
+
+| Ch. | In one line |
+|---|---|
+| [27 · Programming languages and backend frameworks](./27-编程语言与后端框架选型) | Language and framework choice combines runtime, ecosystem, team capability, and maintenance cost. |
+| [28 · Databases and storage](./28-数据库与存储选型) | Draw the data lifecycle before choosing truth sources, read models, search, object storage, and vector stores. |
+| [29 · Cache, message queues, and events](./29-缓存消息队列与事件系统选型) | Separate read hotspots, time mismatch, and fact broadcast before naming Redis or Kafka. |
+| [30 · APIs and service communication](./30-API与服务通信选型) | Decide sync/async, internal/external, and contract strength before REST, gRPC, or GraphQL. |
+| [31 · Cloud native and deployment platforms](./31-云原生与部署平台选型) | Cloud native is not "use K8s"; it is choosing a deployment and rollback model the team can operate. |
+| [32 · Observability and reliability stack](./32-可观测性与可靠性技术栈选型) | Work backward from user SLOs to metrics, logs, traces, alerts, on-call, and incident flow. |
+| [33 · AI infrastructure stack](./33-AI基础设施技术栈选型) | First identify the scarce resource: model, GPU, context, retrieval quality, cost, or control. |
+| [34 · Technology selection decision tree](./34-技术选型决策树) | Connect new-tech necessity, stage, failure mode, team capability, and exit plan into one tree. |
+
+---
+
 ## After finishing, you should be able to
 
 - [ ] Take a vague requirement and ask the right questions to break it into clear constraints and quality goals.
@@ -104,6 +121,7 @@ Foundations + advanced teach *how to judge*; **the practice track teaches how to
 - [ ] Make architecture decisions based on constraints and trade-offs — and write down the reasons.
 - [ ] *(Practice track)* Walk a full path on an unfamiliar system or template: read → design → evolve → migrate.
 - [ ] *(AI-collab track)* Write architecture constraints for AI, review its output, and pick the right collaboration mode for prototype vs production.
+- [ ] *(Technology stack track)* Turn "what tech should we use" into a reviewable ADR instead of a popularity or preference call.
 
 ---
 

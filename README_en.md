@@ -54,49 +54,62 @@ Not "how to use framework X", but a transferable way of thinking: how to turn a 
 
 | Ch. | Topic | What you'll learn |
 |---|---|---|
-| [01](tutorial/01-为什么先有架构思维.md) | Why architecture-first thinking | Why "architecture first" is *the* core skill of this era |
-| [02](tutorial/02-架构师的思考框架.md) | The architect's thinking framework | The universal flow: requirements → constraints → quality attributes → trade-offs |
-| [03](tutorial/03-读懂与画好架构图.md) | Reading & drawing architecture diagrams | Use the C4 model to get the system out of your head and onto paper |
-| [04](tutorial/04-十大核心架构模式.md) | 10 core architecture patterns | Layered, microservices, event-driven, CQRS… what each one actually solves |
-| [05](tutorial/05-数据与状态.md) | Data & state | Why *data* is the real hard part of any system |
-| [06](tutorial/06-质量属性与取舍.md) | Quality attributes & trade-offs | Performance / availability / consistency / cost — how to weigh them |
-| [07](tutorial/07-从0到1设计一个系统.md) | Designing a system from 0 to 1 | A step-by-step methodology you can actually follow |
-| [08](tutorial/08-架构决策记录与演进.md) | ADRs & evolution | Record decisions with ADRs and let architecture grow with the business |
-| [09](tutorial/09-架构品味.md) | Architectural taste | What separates good architects beyond the framework; grow judgment via real cases (microservices→monolith, big-company tastes) |
+| [01](en/tutorial/01-为什么先有架构思维.md) | Why architecture-first thinking | Why "architecture first" is *the* core skill of this era |
+| [02](en/tutorial/02-架构师的思考框架.md) | The architect's thinking framework | The universal flow: requirements → constraints → quality attributes → trade-offs |
+| [03](en/tutorial/03-读懂与画好架构图.md) | Reading & drawing architecture diagrams | Use the C4 model to get the system out of your head and onto paper |
+| [04](en/tutorial/04-十大核心架构模式.md) | 10 core architecture patterns | Layered, microservices, event-driven, CQRS… what each one actually solves |
+| [05](en/tutorial/05-数据与状态.md) | Data & state | Why *data* is the real hard part of any system |
+| [06](en/tutorial/06-质量属性与取舍.md) | Quality attributes & trade-offs | Performance / availability / consistency / cost — how to weigh them |
+| [07](en/tutorial/07-从0到1设计一个系统.md) | Designing a system from 0 to 1 | A step-by-step methodology you can actually follow |
+| [08](en/tutorial/08-架构决策记录与演进.md) | ADRs & evolution | Record decisions with ADRs and let architecture grow with the business |
+| [09](en/tutorial/09-架构品味.md) | Architectural taste | What separates good architects beyond the framework; grow judgment via real cases (microservices→monolith, big-company tastes) |
 
 **🚀 Advanced track (10–17, new) — taming the hard rock that bites once a system gets big or critical:**
 
 | Ch. | Topic | What you'll tame |
 |---|---|---|
-| [10](tutorial/10-分布式系统的硬道理.md) | Distributed systems: the hard truths | Partial failure, no global clock, the cost of consensus, the exactly-once illusion |
-| [11](tutorial/11-数据一致性工程.md) | The engineering of data consistency | Saga, Outbox, idempotency, event sourcing, CQRS |
-| [12](tutorial/12-为失败而设计.md) | Designing for failure: resilience | Cascading failure, circuit breakers, bulkheads, load shedding, SLOs, chaos |
-| [13](tutorial/13-规模化的力学.md) | The mechanics of scale | Consistent hashing, hot keys, multi-region, tail latency & fan-out |
-| [14](tutorial/14-演进与拆分大型系统.md) | Evolving & splitting large systems | Strangler fig, parallel run, zero-downtime migration, splitting the monolith |
-| [15](tutorial/15-组织即架构.md) | Organization as architecture | Conway / inverse Conway, Team Topologies, platform engineering |
-| [16](tutorial/16-安全与多租户架构.md) | Security & multi-tenancy | Threat modeling, zero trust, blast radius, tenant isolation |
-| [17](tutorial/17-大模型时代的架构判断.md) | Architecting in the age of LLMs | Vibe coding, nondeterminism, context engineering, agentic hard parts |
+| [10](en/tutorial/10-分布式系统的硬道理.md) | Distributed systems: the hard truths | Partial failure, no global clock, the cost of consensus, the exactly-once illusion |
+| [11](en/tutorial/11-数据一致性工程.md) | The engineering of data consistency | Saga, Outbox, idempotency, event sourcing, CQRS |
+| [12](en/tutorial/12-为失败而设计.md) | Designing for failure: resilience | Cascading failure, circuit breakers, bulkheads, load shedding, SLOs, chaos |
+| [13](en/tutorial/13-规模化的力学.md) | The mechanics of scale | Consistent hashing, hot keys, multi-region, tail latency & fan-out |
+| [14](en/tutorial/14-演进与拆分大型系统.md) | Evolving & splitting large systems | Strangler fig, parallel run, zero-downtime migration, splitting the monolith |
+| [15](en/tutorial/15-组织即架构.md) | Organization as architecture | Conway / inverse Conway, Team Topologies, platform engineering |
+| [16](en/tutorial/16-安全与多租户架构.md) | Security & multi-tenancy | Threat modeling, zero trust, blast radius, tenant isolation |
+| [17](en/tutorial/17-大模型时代的架构判断.md) | Architecting in the age of LLMs | Vibe coding, nondeterminism, context engineering, agentic hard parts |
 
 **🎯 Practice track (18–22) — put the method on real cases; bridge tutorial → templates:**
 
 | Ch. | Topic | What you'll practice |
 |---|---|---|
-| [18](tutorial/18-读地图用框架拆解陌生系统.md) | Reading the map: deconstruct unfamiliar systems | Reverse-engineer *why* a `templates/` map is designed that way; practice on RAG / AI chat product |
-| [19](tutorial/19-完整设计演练中等复杂度系统.md) | Full design walkthrough: medium complexity | Run the ch.07 eight-step flow — design an AI customer-service assistant that looks up orders and issues refunds (with token-cost math) |
-| [20](tutorial/20-演进剧本MVP到规模化.md) | Evolution playbook: MVP → scale | Ch.08 + [evolution trigger signals](tutorial/演进触发信号.md) — three life stages of one AI assistant |
-| [21](tutorial/21-拆分与迁移实战.md) | Splitting & migration in practice | Ch.14 as a case: strangler, branch by abstraction, shadow traffic, zero-downtime vector-store swap |
-| [22](tutorial/22-AI原生系统设计.md) | AI-native system design | Upgrade the assistant into an autonomous Agent; land ch.17's three new constraints; bridge to the AI-collab track |
+| [18](en/tutorial/18-读地图用框架拆解陌生系统.md) | Reading the map: deconstruct unfamiliar systems | Reverse-engineer *why* a `templates/` map is designed that way; practice on RAG / AI chat product |
+| [19](en/tutorial/19-完整设计演练中等复杂度系统.md) | Full design walkthrough: medium complexity | Run the ch.07 eight-step flow — design an AI customer-service assistant that looks up orders and issues refunds (with token-cost math) |
+| [20](en/tutorial/20-演进剧本MVP到规模化.md) | Evolution playbook: MVP → scale | Ch.08 + [evolution trigger signals](tutorial/演进触发信号.md) — three life stages of one AI assistant |
+| [21](en/tutorial/21-拆分与迁移实战.md) | Splitting & migration in practice | Ch.14 as a case: strangler, branch by abstraction, shadow traffic, zero-downtime vector-store swap |
+| [22](en/tutorial/22-AI原生系统设计.md) | AI-native system design | Upgrade the assistant into an autonomous Agent; land ch.17's three new constraints; bridge to the AI-collab track |
 
 **🤝 AI-collaborative design track (23–26) — collaborate with AI without losing judgment:**
 
 | Ch. | Topic | What you'll master |
 |---|---|---|
-| [23](tutorial/23-规格即架构约束怎么写给AI.md) | Spec as architecture: constraints for AI | ADR / `AGENTS.md` → enforceable guardrails; pairs with [architecture-copilot](https://github.com/study8677/architecture-copilot) |
-| [24](tutorial/24-审查清单AI产出默认缺什么.md) | Review checklist: what AI output omits by default | Production-grade review checklist from ch.11/12/16 |
-| [25](tutorial/25-评测驱动把够好写进架构.md) | Eval-driven: bake "good enough" into architecture | Eval as a CI gate for nondeterministic systems |
-| [26](tutorial/26-协作决策树何时vibe何时spec-first.md) | Collaboration decision tree: when to vibe, when to spec-first | Prototype vs production workflow — the capstone |
+| [23](en/tutorial/23-规格即架构约束怎么写给AI.md) | Spec as architecture: constraints for AI | ADR / `AGENTS.md` → enforceable guardrails; pairs with [architecture-copilot](https://github.com/study8677/architecture-copilot) |
+| [24](en/tutorial/24-审查清单AI产出默认缺什么.md) | Review checklist: what AI output omits by default | Production-grade review checklist from ch.11/12/16 |
+| [25](en/tutorial/25-评测驱动把够好写进架构.md) | Eval-driven: bake "good enough" into architecture | Eval as a CI gate for nondeterministic systems |
+| [26](en/tutorial/26-协作决策树何时vibe何时spec-first.md) | Collaboration decision tree: when to vibe, when to spec-first | Prototype vs production workflow — the capstone |
 
-> 👉 **New here? Start with [tutorial/README.md](tutorial/README.md)** for the full learning path.
+**🧰 Technology stack selection track (27–34) — turn "what tech to use" into architecture judgment:**
+
+| Ch. | Topic | What you'll judge |
+|---|---|---|
+| [27](en/tutorial/27-编程语言与后端框架选型.md) | Languages & backend frameworks | How language/framework affects runtime, ecosystem, team, and maintenance cost |
+| [28](en/tutorial/28-数据库与存储选型.md) | Databases & storage | How source of truth, read models, search, object storage, and vector stores divide work |
+| [29](en/tutorial/29-缓存消息队列与事件系统选型.md) | Cache, queues & events | What fits read hotspots, spike smoothing, and fact broadcast |
+| [30](en/tutorial/30-API与服务通信选型.md) | APIs & service communication | REST / gRPC / GraphQL / Webhook boundaries |
+| [31](en/tutorial/31-云原生与部署平台选型.md) | Cloud native & deployment | When PaaS, containers, Serverless, or K8s are worth it |
+| [32](en/tutorial/32-可观测性与可靠性技术栈选型.md) | Observability & reliability | Work backward from SLOs to metrics, logs, traces, alerts, incidents |
+| [33](en/tutorial/33-AI基础设施技术栈选型.md) | AI infrastructure | When model API, RAG, vector DB, inference serving, and evals should upgrade |
+| [34](en/tutorial/34-技术选型决策树.md) | Technology selection decision tree | Turn stage, failure mode, team capability, and exit plan into an ADR |
+
+> 👉 **New here? Start with [en/tutorial/README.md](en/tutorial/README.md)** for the full learning path.
 
 ### 🧪 cases/ — Turn architecture from answer into reasoning
 
@@ -161,7 +174,7 @@ Each template is an "architecture map". We **deliberately avoid discussing langu
 
 > 👉 **Want to add your own template?** Follow the unified format in [templates/_TEMPLATE.md](templates/_TEMPLATE.md).
 
-> 📝 **Now fully bilingual** — all **26 tutorial chapters, 25 templates, and the first 6 cases** are available in English. Use the language switch (top-right on the site), or browse `en/` in the repo.
+> 📝 **Now fully bilingual** — all **34 tutorial chapters, 25 templates, and the first 6 cases** are available in English. Use the language switch (top-right on the site), or browse `en/` in the repo.
 
 ---
 

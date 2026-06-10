@@ -1,10 +1,10 @@
 # 26 · Collaboration Decision Tree: When to Vibe, When to Spec-First
 
-> The thesis in one line: **the question is not "should we use AI to write code" — it is "for this particular piece, should we let it vibe freely, or lock down the spec first and then let it write." Prototype all you want by vibing; close out production work with judgment. This chapter distills the previous three chapters (spec / review / eval) into a decision tree you can actually follow, and draws the curtain on the full 26-chapter tutorial.**
+> The thesis in one line: **the question is not "should we use AI to write code" — it is "for this particular piece, should we let it vibe freely, or lock down the spec first and then let it write." Prototype all you want by vibing; close out production work with judgment. This chapter distills the previous three chapters (spec / review / eval) into a decision tree you can actually follow, and closes the AI-collaborative design track.**
 
 ---
 
-> **🏁 The whole tutorial ends here.** You have walked through four tracks: **reading systems and designing from scratch ([01–09](https://github.com/study8677/awesome-architecture/blob/main/tutorial/01-为什么先有架构思维.md)) → taming the hard rock of distributed, critical systems ([10–17](https://github.com/study8677/awesome-architecture/blob/main/tutorial/10-分布式系统的硬道理.md)) → applying the methods to real AI systems ([18–22](https://github.com/study8677/awesome-architecture/blob/main/tutorial/18-读地图用框架拆解陌生系统.md)) → learning to write constraints for AI, review it, and guard its quality ([23–25](https://github.com/study8677/awesome-architecture/blob/main/tutorial/23-规格即架构约束怎么写给AI.md))**. This chapter collects the final three weapons into one workflow — and then, it is your turn.
+> **🤝 Final chapter of the AI-collaborative design track.** You have walked through four capabilities: **reading systems and designing from scratch ([01–09](01-为什么先有架构思维.md)) → taming the hard rock of distributed, critical systems ([10–17](10-分布式系统的硬道理.md)) → applying the methods to real AI systems ([18–22](18-读地图用框架拆解陌生系统.md)) → learning to write constraints for AI, review it, and guard its quality ([23–25](23-规格即架构约束怎么写给AI.md))**. This chapter collects the final three weapons into one workflow.
 
 ---
 
@@ -111,14 +111,14 @@ Whether you are "letting AI write code" or "letting AI act autonomously at runti
 
 ## 5. Back to the beginning: what you have actually been training
 
-After 26 chapters, we return to [Chapter 01](https://github.com/study8677/awesome-architecture/blob/main/tutorial/01-为什么先有架构思维.md) and the reason this repo exists:
+At the end of the AI-collaborative design track, we return to [Chapter 01](01-为什么先有架构思维.md) and the reason this repo exists:
 
 > **Writing code is becoming cheap; architectural judgment is becoming unprecedentedly scarce and valuable.**
 
 From start to finish, this tutorial has never taught a framework or a syntax — AI can produce those in seconds. It taught something **that does not depreciate**:
 
 ```
-   Will depreciate (AI is making it cheap)      Will not depreciate (what you trained across 26 chapters)
+   Will depreciate (AI is making it cheap)      Will not depreciate (what these chapters train)
    ──────────────────────────────────         ──────────────────────────────────────────────────────────
    • Memorizing an API / syntax               • Take a vague requirement and ask the right questions (02/07)
    • Hand-writing boilerplate impl            • Make well-reasoned decisions amid trade-offs (06/08)
@@ -128,7 +128,7 @@ From start to finish, this tutorial has never taught a framework or a syntax —
    → Hand off to AI                           → This is you, in the AI era
 ```
 
-And the final track (23–26) is really saying one thing: **architectural judgment is not obsolete in the AI era — it has a brand-new, extremely high-leverage arena: through the interface of "spec / review / eval / decision," you turn your judgment into the behavioral constraints of an AI army.** You are no longer just "designing a system" — you are "**designing the guardrails and process that continuously produce good systems through AI**." Judgment is amplified, not replaced.
+And the AI-collaborative track (23–26) is really saying one thing: **architectural judgment is not obsolete in the AI era — it has a brand-new, extremely high-leverage arena: through the interface of "spec / review / eval / decision," you turn your judgment into the behavioral constraints of an AI army.** You are no longer just "designing a system" — you are "**designing the guardrails and process that continuously produce good systems through AI**." Judgment is amplified, not replaced.
 
 > **Architectural wisdom**: **vibe coding is not the end of judgment — it is its lever.** A person with judgment + AI = the output of ten people; a person without judgment + AI = ten times the speed of building systems you cannot read, cannot sustain, and cannot change. What decides the outcome has never been how powerful the AI is, but whether the person holding the wheel can read the map clearly.
 
@@ -162,9 +162,9 @@ And the final track (23–26) is really saying one thing: **architectural judgme
 
 ---
 
-## 🏁 Tutorial finale: your turn
+## 🤝 AI-collab track close: judgment keeps going
 
-26 chapters, four tracks, one through-line:
+Up to Chapter 26, the through-line has been:
 
 ```
    01–09  Read systems, design a small-to-medium system from scratch      —— build judgment
@@ -180,11 +180,9 @@ And the final track (23–26) is really saying one thing: **architectural judgme
 
 What this tutorial gave you was never conclusions — it was **the ability to ask questions**. When you can naturally ask, of every technical choice and every piece of AI output, "**why this one? what is the cost? where will it die?**" — you are already thinking like an architect.
 
-> **Now, close the tutorial.** Pick a system you are working on, or any map in [`templates/`](https://github.com/study8677/awesome-architecture/blob/main/templates/README.md), and walk through it: **read it ([18](https://github.com/study8677/awesome-architecture/blob/main/tutorial/18-读地图用框架拆解陌生系统.md)) → design your own version ([19](https://github.com/study8677/awesome-architecture/blob/main/tutorial/19-完整设计演练中等复杂度系统.md)) → think through how it evolves ([20](https://github.com/study8677/awesome-architecture/blob/main/tutorial/20-演进剧本MVP到规模化.md)) → write the constraints for AI ([23](https://github.com/study8677/awesome-architecture/blob/main/tutorial/23-规格即架构约束怎么写给AI.md)) → let AI build, you close it out ([24](https://github.com/study8677/awesome-architecture/blob/main/tutorial/24-审查清单AI产出默认缺什么.md) / [25](https://github.com/study8677/awesome-architecture/blob/main/tutorial/25-评测驱动把够好写进架构.md)).**
+> **Keep going.** Once you can design systems and collaborate with AI, real projects keep asking "what technology should we use?" The next track starts with [27 · Programming languages and backend frameworks](27-编程语言与后端框架选型.md), applying the same architectural judgment to languages, databases, cache, APIs, deployment, observability, and AI infrastructure.
 >
-> If you want a coach to walk with you, use the companion [architecture-copilot](https://github.com/study8677/architecture-copilot) skill — it turns these 26 chapters into an interactive partner inside Claude Code / Cursor / Codex that **guides you through architectural judgment step by step**.
->
-> In an era where AI writes code for everyone, may you become the one who — **reads the map clearly before deciding whether to take the road.**
+> If you want a coach to walk with you, use the companion [architecture-copilot](https://github.com/study8677/architecture-copilot) skill — it turns this tutorial into an interactive partner inside Claude Code / Cursor / Codex that **guides you through architectural judgment step by step**.
 
 ---
 

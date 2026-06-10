@@ -42,6 +42,17 @@ const zhTutorialCollab = [
   { text: '26 · 协作决策树:何时 vibe、何时 spec-first', link: '/tutorial/26-协作决策树何时vibe何时spec-first' },
 ]
 
+const zhTutorialStack = [
+  { text: '27 · 编程语言与后端框架选型', link: '/tutorial/27-编程语言与后端框架选型' },
+  { text: '28 · 数据库与存储选型', link: '/tutorial/28-数据库与存储选型' },
+  { text: '29 · 缓存、消息队列与事件系统选型', link: '/tutorial/29-缓存消息队列与事件系统选型' },
+  { text: '30 · API 与服务通信选型', link: '/tutorial/30-API与服务通信选型' },
+  { text: '31 · 云原生与部署平台选型', link: '/tutorial/31-云原生与部署平台选型' },
+  { text: '32 · 可观测性与可靠性技术栈选型', link: '/tutorial/32-可观测性与可靠性技术栈选型' },
+  { text: '33 · AI 基础设施技术栈选型', link: '/tutorial/33-AI基础设施技术栈选型' },
+  { text: '34 · 技术选型决策树', link: '/tutorial/34-技术选型决策树' },
+]
+
 const zhCases = [
   { text: '案例总览', link: '/cases/README' },
   { text: '01 · StarArena:演唱会抢票系统', link: '/cases/stararena-ticketing/README' },
@@ -98,7 +109,7 @@ const zhAgent = [
 
 export default defineConfig({
   title: 'Awesome Architecture',
-  description: '专注「架构思维」的中英双语知识库:26 章教程 + 25 张真实系统架构地图 + 6 个端到端案例。',
+  description: '专注「架构思维」的中英双语知识库:34 章教程 + 25 张真实系统架构地图 + 6 个端到端案例。',
   lang: 'zh-Hans',
   base: process.env.GITHUB_PAGES ? '/awesome-architecture/' : '/',
   cleanUrls: true,
@@ -108,7 +119,7 @@ export default defineConfig({
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { property: 'og:title', content: 'Awesome Architecture · 架构图谱' }],
-    ['meta', { property: 'og:description', content: '像架构师一样思考:26 章教程 + 25 张真实系统架构地图 + 6 个端到端案例。' }],
+    ['meta', { property: 'og:description', content: '像架构师一样思考:34 章教程 + 25 张真实系统架构地图 + 6 个端到端案例。' }],
     // 注:Hypothesis 划词标注不再全站默认加载;改由评论区顶部的 toggle 按需注入。
     // 见 .vitepress/theme/components/Comments.vue 的 loadHypothesis()。
   ],
@@ -137,6 +148,7 @@ export default defineConfig({
             { text: '🚀 进阶篇', items: zhTutorialAdvanced },
             { text: '🎯 实战篇', items: zhTutorialPractice },
             { text: '🤝 AI 协同篇', items: zhTutorialCollab },
+            { text: '🧰 技术栈选型篇', items: zhTutorialStack },
           ],
           '/templates/': [
             { text: '🗺️ 经典 / 通用系统', items: zhCommon },
@@ -151,6 +163,7 @@ export default defineConfig({
             { text: '🚀 教程 · 进阶篇', collapsed: false, items: zhTutorialAdvanced },
             { text: '🎯 教程 · 实战篇', collapsed: false, items: zhTutorialPractice },
             { text: '🤝 教程 · AI 协同篇', collapsed: false, items: zhTutorialCollab },
+            { text: '🧰 教程 · 技术栈选型篇', collapsed: false, items: zhTutorialStack },
             { text: '🧪 案例篇', collapsed: false, items: zhCases },
             { text: '🗺️ 经典 / 通用系统', collapsed: true, items: zhCommon },
             { text: '🤖 AI 原生系统', collapsed: true, items: zhAI },
@@ -233,6 +246,20 @@ export default defineConfig({
                 { text: '24 · Review checklist: what AI output omits by default', link: '/en/tutorial/24-审查清单AI产出默认缺什么' },
                 { text: '25 · Eval-driven: bake "good enough" into architecture', link: '/en/tutorial/25-评测驱动把够好写进架构' },
                 { text: '26 · Collaboration decision tree: when to vibe, when to spec-first', link: '/en/tutorial/26-协作决策树何时vibe何时spec-first' },
+              ],
+            },
+            {
+              text: '🧰 Tutorial · Technology Stack Selection',
+              collapsed: true,
+              items: [
+                { text: '27 · Languages & backend frameworks', link: '/en/tutorial/27-编程语言与后端框架选型' },
+                { text: '28 · Databases & storage', link: '/en/tutorial/28-数据库与存储选型' },
+                { text: '29 · Cache, queues & events', link: '/en/tutorial/29-缓存消息队列与事件系统选型' },
+                { text: '30 · APIs & service communication', link: '/en/tutorial/30-API与服务通信选型' },
+                { text: '31 · Cloud native & deployment', link: '/en/tutorial/31-云原生与部署平台选型' },
+                { text: '32 · Observability & reliability', link: '/en/tutorial/32-可观测性与可靠性技术栈选型' },
+                { text: '33 · AI infrastructure', link: '/en/tutorial/33-AI基础设施技术栈选型' },
+                { text: '34 · Technology selection decision tree', link: '/en/tutorial/34-技术选型决策树' },
               ],
             },
             {
