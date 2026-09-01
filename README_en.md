@@ -161,7 +161,7 @@ Each template is an "architecture map". We **deliberately avoid discussing langu
 
 | Template | Representative products / prototypes | Key architecture themes |
 |---|---|---|
-| [AI Gateway / Relay](en/templates/ai-gateway/README.md) | One API, LiteLLM, Portkey | Unified API, billing & rate-limit, load balancing, caching |
+| [AI Gateway / Relay](en/templates/ai-gateway/README.md) | One API, LiteLLM, Bifrost, Portkey | Unified API, billing & rate-limit, load balancing, caching |
 | [RAG Knowledge Base](en/templates/rag-knowledge-base/README.md) | RAGFlow, LlamaIndex, Dify | Chunking, vector retrieval, hybrid search + rerank, citations |
 | [AI Agent / Workflow](en/templates/ai-agent-platform/README.md) | Dify, Coze, LangGraph | Action loop, tool sandbox, memory, guardrails |
 | [Inference Serving](en/templates/inference-serving/README.md) | vLLM, SGLang, Triton | Continuous batching, paged KV cache, quantization |

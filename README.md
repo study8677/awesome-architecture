@@ -174,7 +174,7 @@ awesome-architecture/
 
 | 模板 | 代表产品 / 原型 | 核心架构看点 |
 |---|---|---|
-| [AI 中转站 / 网关](templates/ai-gateway/README.md) | One API、LiteLLM、Portkey | 统一接口、计费限流、负载均衡、故障转移、缓存 |
+| [AI 中转站 / 网关](templates/ai-gateway/README.md) | One API、LiteLLM、Bifrost、Portkey | 统一接口、计费限流、负载均衡、故障转移、缓存 |
 | [RAG 知识库](templates/rag-knowledge-base/README.md) | RAGFlow、LlamaIndex、Dify | 切块、向量检索、混合检索+重排、引用溯源 |
 | [AI Agent / 工作流](templates/ai-agent-platform/README.md) | Dify、Coze、LangGraph | 行动循环、工具沙箱、记忆、可控兜底 |
 | [模型推理服务](templates/inference-serving/README.md) | vLLM、SGLang、Triton | 连续批处理、分页 KV 缓存、量化、多副本 |

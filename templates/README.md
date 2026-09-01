@@ -34,7 +34,7 @@
 
 | 模板 | 代表产品 / 原型 | 一句话定位 | 核心看点 |
 |---|---|---|---|
-| [AI 中转站 / 网关](ai-gateway/README.md) | One API、LiteLLM、Portkey | 用统一入口接入所有大模型并集中治理 | 统一接口、计费限流、负载均衡、缓存 |
+| [AI 中转站 / 网关](ai-gateway/README.md) | One API、LiteLLM、Bifrost、Portkey | 用统一入口接入所有大模型并集中治理 | 统一接口、计费限流、负载均衡、缓存 |
 | [RAG 知识库](rag-knowledge-base/README.md) | RAGFlow、LlamaIndex、Dify | 让模型「开卷考试」、基于你的资料作答 | 切块、向量检索、混合检索+重排、引用 |
 | [AI Agent / 工作流](ai-agent-platform/README.md) | Dify、Coze、LangGraph | 让模型规划→调工具→观察→再决策 | 行动循环、工具沙箱、记忆、可控兜底 |
 | [模型推理服务](inference-serving/README.md) | vLLM、SGLang、Triton | 在 GPU 上把模型榨到最高吞吐 | 连续批处理、分页 KV、量化、多副本 |
