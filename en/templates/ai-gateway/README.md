@@ -1,6 +1,6 @@
 # AI Relay Station / AI Gateway Architecture Template
 
-> **Representative products**: One API, New API, LiteLLM, Helicone, Portkey, OpenRouter, Cloudflare AI Gateway
+> **Representative products**: One API, New API, LiteLLM, Bifrost, Helicone, Portkey, OpenRouter, Cloudflare AI Gateway
 > **One-line positioning**: Stand up a unified "middle layer" between your application and the many large-model providers out there — plug into every model through one (usually OpenAI-compatible) interface, and centralize auth, billing, rate limiting, load balancing, failover, caching, and observability.
 
 ---
@@ -197,6 +197,7 @@ Core entities: `downstream user / key / quota`; `upstream provider / key pool`; 
 - [BerriAI/litellm](https://github.com/BerriAI/litellm) — a gateway / proxy to call 100+ models in OpenAI format, with built-in cost tracking, load balancing, failover, and rate limiting.
 - [Helicone/ai-gateway](https://github.com/Helicone/ai-gateway) — a high-performance open-source AI gateway written in Rust, focused on load balancing, caching, rate limiting, and observability.
 - [Portkey-AI/gateway](https://github.com/Portkey-AI/gateway) — an ultra-lightweight (<1ms added latency) open-source AI gateway; routing + guardrails + multi-provider.
+- [maximhq/bifrost](https://github.com/maximhq/bifrost) — a high-performance Go AI gateway that unifies 23+ providers behind an OpenAI-compatible API, with automatic failover, load balancing, semantic caching, and native observability.
 
 **📖 Engineering docs / resources:**
 - [Cloudflare AI Gateway docs](https://developers.cloudflare.com/ai-gateway/) — a managed AI gateway: caching, rate limiting, retries, observability — useful for understanding "how a managed solution is designed."
