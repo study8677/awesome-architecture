@@ -1,6 +1,6 @@
 # AI 中转站 / AI 网关 架构模板
 
-> **代表产品**:One API、New API、LiteLLM、Helicone、Portkey、OpenRouter、Cloudflare AI Gateway
+> **代表产品**:One API、New API、LiteLLM、Bifrost、Helicone、Portkey、OpenRouter、Cloudflare AI Gateway
 > **一句话定位**:在你的应用和众多大模型供应商之间,架一个统一的「中间层」——用一套(通常是 OpenAI 兼容的)接口接入所有模型,并集中做鉴权、计费、限流、负载均衡、故障转移、缓存与可观测。
 
 ---
@@ -193,6 +193,7 @@ AI 网关 = **LLM 时代的 API 网关 + 反向代理**。它本身不产生任�
 - [BerriAI/litellm](https://github.com/BerriAI/litellm) — 用 OpenAI 格式调用 100+ 模型的网关 / 代理,内置成本追踪、负载均衡、故障转移、限流。
 - [Helicone/ai-gateway](https://github.com/Helicone/ai-gateway) — Rust 写的高性能开源 AI 网关,主打负载均衡、缓存、限流、可观测。
 - [Portkey-AI/gateway](https://github.com/Portkey-AI/gateway) — 极轻量(<1ms 附加延迟)的开源 AI 网关,路由 + 护栏 + 多供应商。
+- [maximhq/bifrost](https://github.com/maximhq/bifrost) — 高性能 Go AI 网关,通过一个 OpenAI 兼容接口统一 23+ 模型供应商,支持自动故障转移、负载均衡、语义缓存与原生可观测。
 
 **📖 工程文档 / 资料:**
 - [Cloudflare AI Gateway 文档](https://developers.cloudflare.com/ai-gateway/) — 托管型 AI 网关:缓存、限流、重试、可观测,理解「托管方案怎么设计」。
