@@ -113,6 +113,12 @@ Not "how to use framework X", but a transferable way of thinking: how to turn a 
 | [33](en/tutorial/33-AI基础设施技术栈选型.md) | AI infrastructure | When model API, RAG, vector DB, inference serving, and evals should upgrade |
 | [34](en/tutorial/34-技术选型决策树.md) | Technology selection decision tree | Turn stage, failure mode, team capability, and exit plan into an ADR |
 
+**🧠 Foundation Model Training Decisions (T01–, bilingual) — separate from the numbered Chapters 01–40:**
+
+| Ch. | Topic | What you'll judge |
+|---|---|---|
+| [T01](en/tutorial/T01-训练方案不是算法排行榜先把决策分层.md) | Training Plans Are Not an Algorithm Leaderboard: Layer the Decision First | Start from goals, tasks, data, and learning signals to judge when SFT, DPO, PPO, or GRPO fits—and what system costs follow |
+
 > 👉 **New here? Start with [en/tutorial/README.md](en/tutorial/README.md)** for the full learning path.
 
 ### 🧪 cases/ — Turn architecture from answer into reasoning
