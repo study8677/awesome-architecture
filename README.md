@@ -124,6 +124,12 @@ awesome-architecture/
 
 > 专题入口见 [AI 原生组织 / 流程架构专题入口](templates/ai-native-organization/README.md),它是 35–40 的阅读索引,不计入 31 个正式模板。
 
+**🧠 基础模型训练决策专题(T01–,中英双语)—— 独立于正式 01–40 章:**
+
+| 章节 | 主题 | 你将判断 |
+|---|---|---|
+| [T01](tutorial/T01-训练方案不是算法排行榜先把决策分层.md) | 训练方案不是算法排行榜：先把决策分层 | 从目标、任务、数据和学习信号出发,判断 SFT、DPO、PPO、GRPO 的适用条件与系统代价 |
+
 > 👉 **新手从 [tutorial/README.md](tutorial/README.md) 开始**,那里有完整的学习路径。
 
 ### 🧪 cases/ —— 把架构从答案写成推理过程

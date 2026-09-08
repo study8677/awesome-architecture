@@ -112,6 +112,18 @@ Foundations + advanced teach *how to judge*; **the practice track teaches how to
 
 ---
 
+## 🧠 Foundation Model Training Decisions (T01–) — constraints before algorithms
+
+This bilingual special topic sits outside the numbered Chapters 01–40. It is for teams already operating a foundation-model production pipeline and deciding among pre-training and post-training approaches. Its `Txx` numbering does not change the existing tutorial sequence.
+
+| Ch. | In one line |
+|---|---|
+| [T01 · Training Plans Are Not an Algorithm Leaderboard: Layer the Decision First](./T01-训练方案不是算法排行榜先把决策分层) | Start from capability goals, task shape, data, and learning signals; then judge what SFT, DPO, PPO, and GRPO solve and what costs they introduce. |
+
+> This special topic is available in both Chinese and English. Future chapters will continue the separate `Txx` sequence.
+
+---
+
 ## After finishing, you should be able to
 
 - [ ] Take a vague requirement and ask the right questions to break it into clear constraints and quality goals.

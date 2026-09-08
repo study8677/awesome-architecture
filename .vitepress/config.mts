@@ -62,6 +62,14 @@ const zhTutorialOrg = [
   { text: '40 · AI 原生组织演进路线', link: '/tutorial/40-AI原生组织演进路线' },
 ]
 
+const zhTutorialTraining = [
+  { text: 'T01 · 训练方案不是算法排行榜：先把决策分层', link: '/tutorial/T01-训练方案不是算法排行榜先把决策分层' },
+]
+
+const enTutorialTraining = [
+  { text: 'T01 · Training Plans Are Not an Algorithm Leaderboard: Layer the Decision First', link: '/en/tutorial/T01-训练方案不是算法排行榜先把决策分层' },
+]
+
 const zhCases = [
   { text: '案例总览', link: '/cases/README' },
   { text: '01 · StarArena:演唱会抢票系统', link: '/cases/stararena-ticketing/README' },
@@ -171,6 +179,7 @@ export default defineConfig({
             { text: '🤝 AI 协同篇', items: zhTutorialCollab },
             { text: '🧰 技术栈选型篇', items: zhTutorialStack },
             { text: '🧬 AI 原生组织篇', items: zhTutorialOrg },
+            { text: '🧠 基础模型训练决策专题', items: zhTutorialTraining },
           ],
           '/templates/': [
             { text: '🗺️ 经典 / 通用系统', items: zhCommon },
@@ -189,6 +198,7 @@ export default defineConfig({
             { text: '🤝 教程 · AI 协同篇', collapsed: false, items: zhTutorialCollab },
             { text: '🧰 教程 · 技术栈选型篇', collapsed: false, items: zhTutorialStack },
             { text: '🧬 教程 · AI 原生组织篇', collapsed: false, items: zhTutorialOrg },
+            { text: '🧠 教程 · 基础模型训练决策专题', collapsed: false, items: zhTutorialTraining },
             { text: '🧪 案例篇', collapsed: false, items: zhCases },
             { text: '🗺️ 经典 / 通用系统', collapsed: true, items: zhCommon },
             { text: '🤖 AI 原生系统', collapsed: true, items: zhAI },
@@ -288,6 +298,11 @@ export default defineConfig({
                 { text: '33 · AI infrastructure', link: '/en/tutorial/33-AI基础设施技术栈选型' },
                 { text: '34 · Technology selection decision tree', link: '/en/tutorial/34-技术选型决策树' },
               ],
+            },
+            {
+              text: '🧠 Special Topic · Foundation Model Training Decisions',
+              collapsed: false,
+              items: enTutorialTraining,
             },
             {
               text: '🧪 Cases',
