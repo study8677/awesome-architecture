@@ -136,22 +136,63 @@ const zhIndustrial = [
   { text: '机器人系统', link: '/templates/robotics/README' },
 ]
 
+// ── 站点级常量:被 sitemap、canonical、Open Graph 卡片复用,避免多处硬编码 ──
+const SITE_URL = 'https://study8677.github.io/awesome-architecture/'
+const SITE_TITLE = 'Awesome Architecture'
+const SITE_DESC =
+  '专注「架构思维」的中英双语知识库:40 章教程 + 31 张真实系统架构地图 + 6 个端到端案例。'
+
 export default defineConfig({
-  title: 'Awesome Architecture',
-  description: '专注「架构思维」的中英双语知识库:40 章教程 + 31 张真实系统架构地图 + 6 个端到端案例。',
+  title: SITE_TITLE,
+  description: SITE_DESC,
   lang: 'zh-Hans',
   base: process.env.GITHUB_PAGES ? '/awesome-architecture/' : '/',
   cleanUrls: true,
   ignoreDeadLinks: false,
   lastUpdated: true,
+  // 生成 sitemap.xml,利于搜索引擎收录(公开知识库的 SEO 基础)。
+  // hostname 用 GitHub Pages 默认域名;换自定义域名时改 SITE_URL 即可。
+  sitemap: {
+    hostname: SITE_URL,
+  },
   srcExclude: [],
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
-    ['meta', { property: 'og:title', content: 'Awesome Architecture · 架构图谱' }],
-    ['meta', { property: 'og:description', content: '像架构师一样思考:40 章教程 + 31 张真实系统架构地图 + 6 个端到端案例。' }],
+    // 站点级 OG/Twitter 默认值(不含 title/description —— 那两项由下方 transformPageData
+    // 按页注入,避免同一页出现两个 og:title 这类重复标签)。
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: SITE_TITLE }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
     // 注:Hypothesis 划词标注不再全站默认加载;改由评论区顶部的 toggle 按需注入。
     // 见 .vitepress/theme/components/Comments.vue 的 loadHypothesis()。
   ],
+
+  // ── 逐页注入 canonical + Open Graph/Twitter 的标题与描述 ──
+  // 背景:此前 164 个页面共用同一套 og:title/og:description,分享到任何平台卡片都长一个样,
+  // 且全站无 canonical。这里按每页真实标题/描述生成,并补上规范链接,利于 SEO 与社交分享。
+  transformPageData(pageData) {
+    // 源文件相对路径 → cleanUrls 后的线上路径:
+    //   index.md              → ''                    (站点根)
+    //   en/index.md           → 'en/'
+    //   templates/x/README.md → 'templates/x/README'
+    const cleanPath = pageData.relativePath
+      .replace(/(^|\/)index\.md$/, '$1')
+      .replace(/\.md$/, '')
+    const url = SITE_URL + cleanPath
+    const title = pageData.title ? `${pageData.title} · ${SITE_TITLE}` : SITE_TITLE
+    const description =
+      pageData.description || pageData.frontmatter?.description || SITE_DESC
+
+    const head = (pageData.frontmatter.head ??= [])
+    head.push(
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }],
+    )
+  },
 
   themeConfig: {
     search: { provider: 'local' },
