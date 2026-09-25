@@ -270,4 +270,6 @@ awesome-architecture/
 
 ## 🔗 友链
 
+- [MySpec](https://myspec.dev) — Spec-driven development platform compiling guided developer discovery interviews into deterministic 4-file specification bundles (`constitution.md`, `requirements.md`, `solution.md`, `tasks.md`) with MCP server integration.
+
 - [LINUX DO](https://linux.do/) —— 新的理想型社区,一群热爱技术、乐于分享的开发者聚集地。
