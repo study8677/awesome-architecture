@@ -87,7 +87,7 @@ Not "how to use framework X", but a transferable way of thinking: how to turn a 
 |---|---|---|
 | [18](en/tutorial/18-读地图用框架拆解陌生系统.md) | Reading the map: deconstruct unfamiliar systems | Reverse-engineer *why* a `templates/` map is designed that way; practice on RAG / AI chat product |
 | [19](en/tutorial/19-完整设计演练中等复杂度系统.md) | Full design walkthrough: medium complexity | Run the ch.07 eight-step flow — design an AI customer-service assistant that looks up orders and issues refunds (with token-cost math) |
-| [20](en/tutorial/20-演进剧本MVP到规模化.md) | Evolution playbook: MVP → scale | Ch.08 + [evolution trigger signals](tutorial/演进触发信号.md) — three life stages of one AI assistant |
+| [20](en/tutorial/20-演进剧本MVP到规模化.md) | Evolution playbook: MVP → scale | Ch.08 + [evolution trigger signals](en/tutorial/演进触发信号.md) — three life stages of one AI assistant |
 | [21](en/tutorial/21-拆分与迁移实战.md) | Splitting & migration in practice | Ch.14 as a case: strangler, branch by abstraction, shadow traffic, zero-downtime vector-store swap |
 | [22](en/tutorial/22-AI原生系统设计.md) | AI-native system design | Upgrade the assistant into an autonomous Agent; land ch.17's three new constraints; bridge to the AI-collab track |
 
@@ -112,6 +112,19 @@ Not "how to use framework X", but a transferable way of thinking: how to turn a 
 | [32](en/tutorial/32-可观测性与可靠性技术栈选型.md) | Observability & reliability | Work backward from SLOs to metrics, logs, traces, alerts, incidents |
 | [33](en/tutorial/33-AI基础设施技术栈选型.md) | AI infrastructure | When model API, RAG, vector DB, inference serving, and evals should upgrade |
 | [34](en/tutorial/34-技术选型决策树.md) | Technology selection decision tree | Turn stage, failure mode, team capability, and exit plan into an ADR |
+
+**🧬 AI-native organization track (35–40) — turn AI into an organization-wide production workflow:**
+
+| Ch. | Topic | What you'll judge |
+|---|---|---|
+| [35](en/tutorial/35-AI原生组织架构.md) | AI-native organizational architecture | Why "everyone uses AI" does not equal an AI-native organization |
+| [36](en/tutorial/36-超级个体与超级团队.md) | Super individuals & super teams | How talent density, AI leverage, and organizational friction jointly determine competitiveness |
+| [37](en/tutorial/37-共享上下文架构.md) | Shared context architecture | How PRDs, ADRs, tasks, traces, and post-mortems become the shared source of truth for humans and Agents |
+| [38](en/tutorial/38-AI工作流架构.md) | AI workflow architecture | How personal prompts compound into templates, Skills, Flows, and Golden Paths |
+| [39](en/tutorial/39-责任与治理架构.md) | Accountability & governance architecture | How Owners, permissions, approvals, audits, and incentives keep AI from going off the rails |
+| [40](en/tutorial/40-AI原生组织演进路线.md) | AI-native organization evolution roadmap | From a 3–5 person pilot squad to multi-team reuse and an organizational AI operating system |
+
+> See the [AI-Native Organization / Process Architecture Special Topic](en/templates/ai-native-organization/README.md) entry page (reading index for Chapters 35–40; not counted among the 31 formal system templates).
 
 **🧠 Foundation Model Training Decisions (T01–, bilingual) — separate from the numbered Chapters 01–40:**
 
@@ -200,7 +213,7 @@ Each template is an "architecture map". We **deliberately avoid discussing langu
 
 > 👉 **Want to add your own template?** Follow the unified format in [templates/_TEMPLATE.md](templates/_TEMPLATE.md).
 
-> 📝 **English translation coverage** — **34 of 40 tutorial chapters, all 31 templates, and the first 6 cases** are available in English. Use the language switch (top-right on the site), or browse `en/` in the repo.
+> 📝 **English translation coverage** — **All 40 tutorial chapters (plus T01 and appendices), all 31 templates, and the first 6 cases** are available in English. Use the language switch (top-right on the site), or browse `en/` in the repo.
 
 ---
 

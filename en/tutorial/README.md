@@ -112,6 +112,23 @@ Foundations + advanced teach *how to judge*; **the practice track teaches how to
 
 ---
 
+## 🧬 AI-native organization track (35–40) — turn AI into an organization-wide production system
+
+**Prerequisite: Organization as Architecture + AI-collaborative track.** This track is not about individual tool tips. It explains how a team or company upgrades AI from a personal ad-hoc tool into a durable production system: how super individuals aggregate into super teams, how shared context becomes the organizational interface, how workflows compound, and how accountability governance lands in practice.
+
+| Ch. | In one line |
+|---|---|
+| [35 · AI-native organizational architecture](./35-AI原生组织架构) | Why "everyone uses AI" does not equal an AI-native organization; wire AI into the production system first. |
+| [36 · Super individuals & super teams](./36-超级个体与超级团队) | Once AI amplifies individuals, what truly matters is talent density and low-friction squads. |
+| [37 · Shared context architecture](./37-共享上下文架构) | Have humans and Agents read the exact same goals, specs, tasks, traces, and post-mortems. |
+| [38 · AI workflow architecture](./38-AI工作流架构) | Upgrade personal prompts into templates, Skills, Flows, and organizational Golden Paths. |
+| [39 · Accountability & governance architecture](./39-责任与治理架构) | AI can participate in execution, but Owners, permissions, approvals, audits, and incentives cannot be missing. |
+| [40 · AI-native organization evolution roadmap](./40-AI原生组织演进路线) | Evolve from a 3–5 person real value-stream pilot to multi-squad reuse and an organizational AI operating system. |
+
+> Special topic entry: [AI-Native Organization / Process Architecture Special Topic](../templates/ai-native-organization/README.md). This serves as the reading index for Chapters 35–40 and is not counted among the 31 formal system templates.
+
+---
+
 ## 🧠 Foundation Model Training Decisions (T01–) — constraints before algorithms
 
 This bilingual special topic sits outside the numbered Chapters 01–40. It is for teams already operating a foundation-model production pipeline and deciding among pre-training and post-training approaches. Its `Txx` numbering does not change the existing tutorial sequence.
@@ -134,6 +151,7 @@ This bilingual special topic sits outside the numbered Chapters 01–40. It is f
 - [ ] *(Practice track)* Walk a full path on an unfamiliar system or template: read → design → evolve → migrate.
 - [ ] *(AI-collab track)* Write architecture constraints for AI, review its output, and pick the right collaboration mode for prototype vs production.
 - [ ] *(Technology stack track)* Turn "what tech should we use" into a reviewable ADR instead of a popularity or preference call.
+- [ ] *(AI-native organization track)* Judge how a team upgrades AI from a personal tool into shared context, workflows, governance, and evolution mechanisms.
 
 ---
 

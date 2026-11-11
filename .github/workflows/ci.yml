@@ -19,6 +19,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Check bilingual & structural consistency
+        run: pnpm docs:check
       - name: Build (with strict dead-link check)
         run: pnpm docs:build
         env:

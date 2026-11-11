@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Awesome Architecture"
   text: "Think like an architect"
-  tagline: "Writing code is disappearing; judgment is what's getting valuable. 40 architecture-thinking chapters (34 translated to English) + 31 real-system architecture maps + 6 end-to-end cases — architecture only, no syntax."
+  tagline: "Writing code is disappearing; judgment is what's getting valuable. 40 architecture-thinking chapters + 31 real-system architecture maps + 6 end-to-end cases — architecture only, no syntax."
   actions:
     - theme: brand
       text: Start the tutorial →
@@ -40,7 +40,7 @@ features:
     details: Each template links to real open-source projects and engineering papers (vLLM, LiteLLM, TigerBeetle, Uber H3, Figma…).
 ---
 
-> ✅ **English translation coverage.** 34 of 40 tutorial chapters, all 31 templates, and the first 6 cases are available in English — use the language switch (top-right) or browse `en/` in the repo. [Contributions welcome](https://github.com/study8677/awesome-architecture).
+> ✅ **Full English coverage.** All 40 tutorial chapters (plus special topic T01 and appendices), all 31 templates, and all 6 cases are available in English — use the language switch (top-right) or browse `en/` in the repo. [Contributions welcome](https://github.com/study8677/awesome-architecture).
 
 ## 🗺️ Browse all 31 architecture maps
 
@@ -55,6 +55,10 @@ The case track is not more templates. It is a full product walkthrough: starting
 ## 🧰 Learn technology stack selection
 
 The new technology stack selection track (27–34) is not a framework tutorial. It teaches the architectural judgment behind language, databases, cache, APIs, deployment, observability, and AI infrastructure. 👉 [Start from Chapter 27](/en/tutorial/27-编程语言与后端框架选型)
+
+## 🧬 Enter the AI-native organization track
+
+The AI-native organization track (35–40) explains how a team or company upgrades AI from a personal tool into an organization-wide production workflow: super teams, shared context, AI workflows, accountability governance, and evolution roadmap. 👉 [Start from Chapter 35](/en/tutorial/35-AI原生组织架构)
 
 ## ⚖️ Architecture is a series of forks in the road
 

@@ -6,7 +6,7 @@
 
 > **🎯 Practice track, ch. 3 · This chapter drills one thing**
 >
-> Drill **evolution judgment**: not "how to design," but "**when to upgrade, when to hold back**." It picks up from [ch. 08](08-架构决策记录与演进.md) (ADRs + when to evolve) and the [Appendix · When to Evolve (trigger signals)](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md), and lands them on the AI customer-service system from [ch. 19](19-完整设计演练中等复杂度系统.md).
+> Drill **evolution judgment**: not "how to design," but "**when to upgrade, when to hold back**." It picks up from [ch. 08](08-架构决策记录与演进.md) (ADRs + when to evolve) and the [Appendix · When to Evolve (trigger signals)](演进触发信号.md), and lands them on the AI customer-service system from [ch. 19](19-完整设计演练中等复杂度系统.md).
 >
 > | By the end you should be able to | This chapter trains it via |
 > |---|---|
@@ -101,7 +101,7 @@ The MVP is working, users are growing, and **these signals all turn red at once*
 | Measured signal (experience ranges) | Notes | Likely bottleneck |
 |---|---|---|
 | **Monthly model bill exceeds budget** (e.g., hits 1.5× budget) | AI-specific! Token burn is too high | No routing, no caching — even simple questions hit the big model |
-| **Time-to-first-token P99 over threshold** (users getting impatient) | Experience-layer signal ([Appendix · When to Evolve](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md)) | Model call is slow + no caching |
+| **Time-to-first-token P99 over threshold** (users getting impatient) | Experience-layer signal ([Appendix · When to Evolve](演进触发信号.md)) | Model call is slow + no caching |
 | **"Off-topic answer" complaint rate > threshold** | AI-specific! Bad retrieval → hallucination | Pure vector + coarse chunking, poor recall |
 | **Manual refund queue backing up** (human reviewers drowning) | Org / efficiency signal | All refunds manual — can't absorb the volume |
 
@@ -177,7 +177,7 @@ The growth stage has stabilized, the business keeps growing, and **a new class o
 | Signal | Notes | Bottleneck |
 |---|---|---|
 | **Onboarding multiple merchant tenants** | Each tenant's knowledge base must not bleed into another's | Missing tenant isolation |
-| **A single model provider outage takes the entire customer-service platform down** | Availability step-change ([Appendix · When to Evolve](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md): eliminate single points) | Model calls are a SPOF |
+| **A single model provider outage takes the entire customer-service platform down** | Availability step-change ([Appendix · When to Evolve](演进触发信号.md): eliminate single points) | Model calls are a SPOF |
 | **After a model upgrade or prompt change, production quality silently regresses** | AI-specific! Nondeterminism causes **quality drift** | No eval gate in CI |
 | **Traffic spikes during promotions + cost continues to grow** | The mechanics of scale ([ch. 13](13-规模化的力学.md)) | Single region, no elasticity |
 
@@ -273,13 +273,13 @@ The growth stage has stabilized, the business keeps growing, and **a new class o
 - **Write one ADR for every upgrade**: the Context field is all signals — that's the decision audit trail.
 - **Two signals unique to AI system evolution**: **cost drift** (token burn scales linearly) and **quality drift** (nondeterminism causes silent regressions) — managed with "cost monitoring + model routing" and "eval as a gate," respectively.
 
-> **Bridging forward**: as you reach the tail end of the scale stage, a new problem surfaces: orchestration, RAG, tools, billing, refunds — all crammed into **one deployment unit** for speed. Now, changing anything breaks everything, nobody dares touch it, and multiple teams block each other — the "org / efficiency" red lights in the [Appendix · When to Evolve](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md). The next chapter, [21 · Splitting & Migration in Practice](21-拆分与迁移实战.md), swaps the engine on this **AI customer-service system mid-flight**: using the strangler fig, parallel run, and zero-downtime migration from [ch. 14](14-演进与拆分大型系统.md) to safely pull it apart piece by piece.
+> **Bridging forward**: as you reach the tail end of the scale stage, a new problem surfaces: orchestration, RAG, tools, billing, refunds — all crammed into **one deployment unit** for speed. Now, changing anything breaks everything, nobody dares touch it, and multiple teams block each other — the "org / efficiency" red lights in the [Appendix · When to Evolve](演进触发信号.md). The next chapter, [21 · Splitting & Migration in Practice](21-拆分与迁移实战.md), swaps the engine on this **AI customer-service system mid-flight**: using the strangler fig, parallel run, and zero-downtime migration from [ch. 14](14-演进与拆分大型系统.md) to safely pull it apart piece by piece.
 
 ---
 
 ## Related links
 
 - The system being evolved: [19 · Full Design Walkthrough: Medium Complexity](19-完整设计演练中等复杂度系统.md) — this chapter evolves it
-- Core methodology: [08 · ADRs & Evolution](08-架构决策记录与演进.md) (ADRs + when to evolve), [Appendix · When to Evolve (trigger signals)](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md) (quantified signal quick-reference)
+- Core methodology: [08 · ADRs & Evolution](08-架构决策记录与演进.md) (ADRs + when to evolve), [Appendix · When to Evolve (trigger signals)](演进触发信号.md) (quantified signal quick-reference)
 - AI-specific constraints: [17 · Architecting in the Age of LLMs](17-大模型时代的架构判断.md) (cost / nondeterminism)
 - Scale mechanics: [13 · The Mechanics of Scale](13-规模化的力学.md) · compare with the [AI Chat Product](../templates/ai-chat-product/README.md) evolution roadmap
