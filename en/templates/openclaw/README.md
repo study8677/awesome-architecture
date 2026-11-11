@@ -9,7 +9,7 @@
 
 OpenClaw = **a local daemon (the Gateway) that lives resident on your own machine and wires a tool-calling, work-doing coding agent into the chat apps you already use.**
 
-You don't have to open yet another app, and you don't have to hand your conversations and keys to some cloud SaaS: it lives parasitically inside the WhatsApp / Telegram / Slack / Discord windows you're already in, and sending it a message is how you hand the agent a task — it stands by 24/7 on your machine. In one line: **it's a "personal, self-hosted, parasitic-on-existing-chat-UI" agent gateway**, not yet another agent SaaS. What sets it fundamentally apart from an [AI Agent Platform](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-agent-platform/README.md) is this: those platforms are built for "multi-tenant, run other people's tasks"; OpenClaw is built for "**single-user, run your own work, with data held locally**."
+You don't have to open yet another app, and you don't have to hand your conversations and keys to some cloud SaaS: it lives parasitically inside the WhatsApp / Telegram / Slack / Discord windows you're already in, and sending it a message is how you hand the agent a task — it stands by 24/7 on your machine. In one line: **it's a "personal, self-hosted, parasitic-on-existing-chat-UI" agent gateway**, not yet another agent SaaS. What sets it fundamentally apart from an [AI Agent Platform](../ai-agent-platform/README.md) is this: those platforms are built for "multi-tenant, run other people's tasks"; OpenClaw is built for "**single-user, run your own work, with data held locally**."
 
 ## 2. The Business Essence: What Problem It Solves
 
@@ -278,11 +278,11 @@ The "wisdom you can carry away" from this design:
 - [Skills mechanism](https://docs.openclaw.ai/tools/skills) — `SKILL.md` + frontmatter + ClawHub; maps to Decision ④.
 
 **🔗 Related templates (this repo):**
-- [Hermes](https://github.com/study8677/awesome-architecture/blob/main/templates/hermes/README.md) — the **peer sister piece**: also a personal gateway that "wires an agent into chat apps"; compare the differences in trade-offs.
-- [Claude Code](https://github.com/study8677/awesome-architecture/blob/main/templates/claude-code/README.md) — one of the coding harnesses OpenClaw can reuse via ACP.
-- [Codex](https://github.com/study8677/awesome-architecture/blob/main/templates/codex/README.md) — another harness reachable via plugin/ACP.
-- [AI Agent / Workflow Platform](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-agent-platform/README.md) — contrast a "multi-tenant, run other people's tasks" agent platform with this "single-user, run your own work" piece.
-- [The Ten Core Architecture Patterns](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md) — the parent of trade-offs like "a single control plane" and "if you can avoid using it, don't."
+- [Hermes](../hermes/README.md) — the **peer sister piece**: also a personal gateway that "wires an agent into chat apps"; compare the differences in trade-offs.
+- [Claude Code](../claude-code/README.md) — one of the coding harnesses OpenClaw can reuse via ACP.
+- [Codex](../codex/README.md) — another harness reachable via plugin/ACP.
+- [AI Agent / Workflow Platform](../ai-agent-platform/README.md) — contrast a "multi-tenant, run other people's tasks" agent platform with this "single-user, run your own work" piece.
+- [The Ten Core Architecture Patterns](../../tutorial/04-十大核心架构模式.md) — the parent of trade-offs like "a single control plane" and "if you can avoid using it, don't."
 
 ---
 

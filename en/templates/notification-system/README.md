@@ -9,7 +9,7 @@
 
 A notification system = **one unified "event → reach" pipeline**.
 
-It turns the various things that happen in a system (an order shipped, someone @-ed you, a suspicious login) into a notification the user receives on the right channel at the right moment. It's a fusion of [event-driven](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md) + [message queues](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md) + **channel adapters** — the core difficulties being **fan-out (one event notifies a huge number of people), channel abstraction (channels differ wildly), and "don't disturb."**
+It turns the various things that happen in a system (an order shipped, someone @-ed you, a suspicious login) into a notification the user receives on the right channel at the right moment. It's a fusion of [event-driven](../../tutorial/04-十大核心架构模式.md) + [message queues](../../tutorial/04-十大核心架构模式.md) + **channel adapters** — the core difficulties being **fan-out (one event notifies a huge number of people), channel abstraction (channels differ wildly), and "don't disturb."**
 
 ## 2. Business Essence: What Problem Does It Solve?
 
@@ -82,7 +82,7 @@ But it's a double-edged sword: **too many notifications = harassment = push turn
 - **Template engine**: renders an event + data into the copy for each channel. *Why it's needed*: content must be tailored by channel (SMS 70 chars vs email rich text) and by language.
 - **Dedup / rate-limit / aggregation**: prevents duplicates and bombing, and merges many into a digest. *Why it's needed*: this is the technical implementation of "don't disturb."
 - **Queue (priority-tiered)**: a buffer for peak-smoothing + async + retry. *Why it's needed*: marketing peaks need smoothing, and sending notifications must never block the business (see Decision 1).
-- **Channel adapters**: translate a unified instruction into the APNs / FCM / SMS / email protocols. *Why it's needed*: shields channel differences — same idea as the adapters in the [AI gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-gateway/README.md).
+- **Channel adapters**: translate a unified instruction into the APNs / FCM / SMS / email protocols. *Why it's needed*: shields channel differences — same idea as the adapters in the [AI gateway](../ai-gateway/README.md).
 - **Delivery status tracking**: records whether each notification went out and whether it succeeded. *Why it's needed*: the foundation of reliable delivery and observability.
 
 ## 6. Key Data Flows
@@ -114,7 +114,7 @@ Core entities: `notification`; `user preferences / subscriptions`; `template`; `
 | Data | Storage type | Why |
 |---|---|---|
 | User preferences / subscriptions | Relational | Structured, needs consistency, queried often |
-| In-app inbox | See the inbox model in [social feed](https://github.com/study8677/awesome-architecture/blob/main/templates/social-feed/README.md) | The write-fanout / read-fanout trade-off |
+| In-app inbox | See the inbox model in [social feed](../social-feed/README.md) | The write-fanout / read-fanout trade-off |
 | Delivery records / status | Time-series / columnar | Massive, aggregated by time to compute delivery rates |
 | Pending-send queue | Message queue | Peak-smoothing, retry, priority |
 
@@ -136,7 +136,7 @@ Core entities: `notification`; `user preferences / subscriptions`; `template`; `
 
 **Decision 4: Delivery guarantee — at-least-once + idempotency**
 - For important notifications, rather resend than lose (at-least-once), but resending makes users receive duplicates.
-- **Leaning**: at-least-once retry on the server, idempotent dedup on the client / channel side. **Same as [payments](https://github.com/study8677/awesome-architecture/blob/main/templates/payment-system/README.md): rather resend than lose, with idempotency catching the duplicates.**
+- **Leaning**: at-least-once retry on the server, idempotent dedup on the client / channel side. **Same as [payments](../payment-system/README.md): rather resend than lose, with idempotency catching the duplicates.**
 
 ## 9. Scaling & Bottlenecks
 
@@ -172,8 +172,8 @@ Core entities: `notification`; `user preferences / subscriptions`; `template`; `
 ## 13. Reusable Takeaways
 
 - 💡 **An async queue for peak-smoothing + retry is the standard stance for handling a "non-critical path."** Sending notifications, sending email, writing logs — none should block the main flow.
-- 💡 **Channel adapters shield heterogeneous third parties**: one instruction set internally, N adapters externally — the same move as the [AI gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-gateway/README.md) "adapting to multiple vendors."
-- 💡 **At-least-once + idempotent dedup**: rather resend than lose, with dedup catching the duplicates — echoing the [payment system](https://github.com/study8677/awesome-architecture/blob/main/templates/payment-system/README.md).
+- 💡 **Channel adapters shield heterogeneous third parties**: one instruction set internally, N adapters externally — the same move as the [AI gateway](../ai-gateway/README.md) "adapting to multiple vendors."
+- 💡 **At-least-once + idempotent dedup**: rather resend than lose, with dedup catching the duplicates — echoing the [payment system](../payment-system/README.md).
 - 💡 **"Don't disturb" is a model case of product wisdom outranking technical capability.** Being able to send doesn't mean you should — a good system knows restraint.
 
 ## 🎯 Quick Quiz

@@ -9,7 +9,7 @@
 
 An Agent platform = **bolting "hands and feet (tools) + memory + an action loop" onto a large model**, turning it from "can talk" into "can do."
 
-What sets it apart from an [AI Chat Product](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-chat-product/README.md) is "autonomy": a chat product is basically "you ask, I answer"; an Agent **decides for itself what to do next** — look something up, call an API, run code, and then decide the next step based on the result, round after round until the task is done. The platform's core job is to make this autonomous behavior **orchestratable, memory-capable, controllable, and observable**.
+What sets it apart from an [AI Chat Product](../ai-chat-product/README.md) is "autonomy": a chat product is basically "you ask, I answer"; an Agent **decides for itself what to do next** — look something up, call an API, run code, and then decide the next step based on the result, round after round until the task is done. The platform's core job is to make this autonomous behavior **orchestratable, memory-capable, controllable, and observable**.
 
 ## 2. The Business Essence: What Problem It Solves
 
@@ -17,7 +17,7 @@ What it sets out to automate are **tasks that require "multi-step reasoning + to
 
 What these tasks have in common: **they can't be settled in one question and one answer; they need an intermediate loop of "do something + see the feedback + adjust."** What an Agent platform sells is exactly "**automating this kind of complex, multi-step task**."
 
-> Anthropic's key insight is worth committing to memory up front: **if a deterministic workflow can solve it, don't reach for an autonomous Agent.** Workflows are predictable, controllable, and cheap; Agents are flexible, but more expensive, slower, and less controllable. This shares its lineage with the line from [Architecture Patterns](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md): "if you can avoid using it, don't."
+> Anthropic's key insight is worth committing to memory up front: **if a deterministic workflow can solve it, don't reach for an autonomous Agent.** Workflows are predictable, controllable, and cheap; Agents are flexible, but more expensive, slower, and less controllable. This shares its lineage with the line from [Architecture Patterns](../../tutorial/04-十大核心架构模式.md): "if you can avoid using it, don't."
 
 ## 3. Core Requirements and Constraints
 
@@ -82,7 +82,7 @@ What these tasks have in common: **they can't be settled in one question and one
 
 - **Orchestrator**: drives the "plan → act → observe" loop, or executes a solidified workflow. *Why it's needed*: it's the hub that turns the model's "ideas" into a "controlled sequence of actions."
 - **Tool registry and execution (sandbox)**: registers the available tools and actually executes the operations the model requests in an **isolated environment**. *Why it's needed*: lets the model "do things"; the sandbox exists because executing external code / operations is risky.
-- **Memory**: short-term (this round's context) + long-term (across sessions, often retrieved via a [vector store](https://github.com/study8677/awesome-architecture/blob/main/templates/vector-database/README.md)). *Why it's needed*: both multi-step tasks and long-term assistants need to "remember."
+- **Memory**: short-term (this round's context) + long-term (across sessions, often retrieved via a [vector store](../vector-database/README.md)). *Why it's needed*: both multi-step tasks and long-term assistants need to "remember."
 - **State / checkpoint**: persists the progress of a long task so it can resume after an interruption. *Why it's needed*: Agent tasks can run a long time and can't be wiped out by a single interruption (durable execution).
 - **Human-in-the-loop gate**: pauses before high-risk / irreversible operations to wait for human approval. *Why it's needed*: gives autonomy a "brake a human can press."
 - **Observability / trace**: records every step's reasoning, tool calls, and results. *Why it's needed*: a multi-step black box is simply undebuggable without a trace.
@@ -178,7 +178,7 @@ Core entities: `task / session`; `step trace`; `memory`; `tool definitions`; `ch
 - 💡 **Any autonomous loop must have a fallback**: limits, timeouts, circuit breakers. Bolting a brake onto anything you set free is a universal rule of system safety.
 - 💡 **Operations with side effects must be controllable + auditable**: sandbox, least privilege, human confirmation, an audit trail — this kit applies to any system that "can change the outside world."
 - 💡 **External content is forever untrusted**: an Agent's tool permissions amplify the danger of prompt injection, all the more reason to stay wary.
-- 💡 **State persistence makes long processes resumable**: storing progress as checkpoints echoes the operation-log idea in [Collaborative Docs](https://github.com/study8677/awesome-architecture/blob/main/templates/collaborative-doc/README.md).
+- 💡 **State persistence makes long processes resumable**: storing progress as checkpoints echoes the operation-log idea in [Collaborative Docs](../collaborative-doc/README.md).
 
 ## 🎯 Quick Quiz
 

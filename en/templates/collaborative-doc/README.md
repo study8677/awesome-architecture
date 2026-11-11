@@ -111,7 +111,7 @@ Core idea: **a document = the result of a stream of operations (ops) applied in 
 | Document metadata / permissions | Relational | Structured, needs consistency |
 | Presence | In-memory | Ephemeral, high-frequency, invalid the moment a connection drops |
 
-> Teaching point: **modeling state as an "operation sequence" rather than a "final value"** buys you three things at once: collaborative merging, version history, and full auditing. This is exactly the idea of Event Sourcing — see [04 · Architecture Patterns](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md).
+> Teaching point: **modeling state as an "operation sequence" rather than a "final value"** buys you three things at once: collaborative merging, version history, and full auditing. This is exactly the idea of Event Sourcing — see [04 · Architecture Patterns](../../tutorial/04-十大核心架构模式.md).
 
 ## 8. Key Architecture Decisions & Trade-offs ⭐
 
@@ -169,7 +169,7 @@ Core idea: **a document = the result of a stream of operations (ops) applied in 
 ## 13. Reusable Takeaways
 
 - 💡 **"Single-writer serialization" is a powerful weapon for killing concurrency complexity**: it turns "many things changing at once" into "process them one by one in a single fixed order."
-- 💡 **The essence of collaboration is "preserve intent, not overwrite results."** Any system where multiple parties modify the same resource (including sync conflicts in [cloud storage](https://github.com/study8677/awesome-architecture/blob/main/templates/cloud-storage/README.md)) should think this way.
+- 💡 **The essence of collaboration is "preserve intent, not overwrite results."** Any system where multiple parties modify the same resource (including sync conflicts in [cloud storage](../cloud-storage/README.md)) should think this way.
 - 💡 **Model state as an "operation sequence" rather than a "final value"**, and in one stroke you gain merge capability, version history, and auditing — that's Event Sourcing.
 - 💡 **Operation log + periodic snapshots** is the universal combo for "I want both complete history and fast loading."
 

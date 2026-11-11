@@ -11,13 +11,13 @@ A vector database = **a storage engine specially optimized for the one task of "
 
 An ordinary database excels at "exact matching" (look up id=123, look up name='Zhang San'); a vector store excels at **"fuzzy, semantic similarity"** (find the image most like this one, the sentence closest in meaning to this one). Its signature skill: among a billion vectors of a few hundred dimensions each, return the closest few in milliseconds.
 
-It's the same kind of thing as the [search engine's inverted index](https://github.com/study8677/awesome-architecture/blob/main/templates/search-engine/README.md) and the [ride-hailing app's spatial index](https://github.com/study8677/awesome-architecture/blob/main/templates/ride-hailing/README.md), just in a different form — **all of them are "organizing data specially for one particular kind of query."**
+It's the same kind of thing as the [search engine's inverted index](../search-engine/README.md) and the [ride-hailing app's spatial index](../ride-hailing/README.md), just in a different form — **all of them are "organizing data specially for one particular kind of query."**
 
 ## 2. The Business Essence: What Problem It Solves
 
 Anything can be vectorized: a passage of text, an image, a clip of audio — all can be encoded by a model into a string of numbers (an embedding), and **the closer in meaning, the closer the vectors sit in space**. So "finding similar" becomes "finding the nearest points in space."
 
-The scenarios it underpins: semantic retrieval for the [RAG Knowledge Base](https://github.com/study8677/awesome-architecture/blob/main/templates/rag-knowledge-base/README.md), image-to-image search, recommendation (finding similar products / content), deduplication, face / voiceprint retrieval. After the AI boom, it went from "niche" to "infrastructure."
+The scenarios it underpins: semantic retrieval for the [RAG Knowledge Base](../rag-knowledge-base/README.md), image-to-image search, recommendation (finding similar products / content), deduplication, face / voiceprint retrieval. After the AI boom, it went from "niche" to "infrastructure."
 
 ## 3. Core Requirements and Constraints
 
@@ -165,7 +165,7 @@ The core entity is minimal: `vector record (id + embedding + metadata payload)`.
 - 💡 **"Trade accuracy for speed" is a classic bargain when handling massive scale.** ANN, sampling, Bloom filters, approximate counting… all trade "roughly right" for "much faster."
 - 💡 **Special queries need a dedicated index**: similarity queries use ANN, just as full-text uses an inverted index and geography uses a spatial index — don't force a general-purpose tool onto a special shape.
 - 💡 **Ask about scale before choosing.** Between pgvector and a distributed vector store, the difference isn't "advanced or not," it's "exactly how many vectors you have."
-- 💡 **Similar ≠ relevant**: the business quality of retrieval results must be evaluated separately — the same point as [RAG](https://github.com/study8677/awesome-architecture/blob/main/templates/rag-knowledge-base/README.md)'s "retrieval quality sets the ceiling."
+- 💡 **Similar ≠ relevant**: the business quality of retrieval results must be evaluated separately — the same point as [RAG](../rag-knowledge-base/README.md)'s "retrieval quality sets the ceiling."
 
 ## 🎯 Quick Quiz
 

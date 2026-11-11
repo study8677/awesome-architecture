@@ -241,7 +241,7 @@ Completely unlike an ordinary system: **here the bottleneck usually isn't the da
 
 ## References & Further Reading
 
-> This template is compiled from the following **real open-source projects** and **papers**. For AI chat products, the three pieces — "inference serving / access orchestration / retrieval" — each get a magnified close-up in this repo as the [Model Inference Serving](https://github.com/study8677/awesome-architecture/blob/main/templates/inference-serving/README.md), [AI Gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-gateway/README.md), and [RAG Knowledge Base](https://github.com/study8677/awesome-architecture/blob/main/templates/rag-knowledge-base/README.md) templates.
+> This template is compiled from the following **real open-source projects** and **papers**. For AI chat products, the three pieces — "inference serving / access orchestration / retrieval" — each get a magnified close-up in this repo as the [Model Inference Serving](../inference-serving/README.md), [AI Gateway](../ai-gateway/README.md), and [RAG Knowledge Base](../rag-knowledge-base/README.md) templates.
 
 **🔧 Open-source prototypes (read the code directly):**
 - [vllm-project/vllm](https://github.com/vllm-project/vllm) — a mainstream LLM inference / serving engine, embodying GPU inference, continuous batching, and KV-cache management.

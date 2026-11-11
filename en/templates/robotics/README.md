@@ -38,7 +38,7 @@ But the business lives or dies not on "can it move," but on the **autonomy rate*
 **Key constraints (boundaries you cannot cross):**
 - 🔴 **Physics is irreversible**: an executed action cannot be recalled; "ship first, fix bugs later" breaks things here.
 - 🔴 **Sensors cannot be trusted**: every observation carries noise; "current position" is forever a probabilistic estimate, never a fact.
-- 🔴 **Onboard compute / battery are limited**: the compute budget and power budget are hard constraints, same as an [embedded device](https://github.com/study8677/awesome-architecture/blob/main/templates/embedded-device/README.md).
+- 🔴 **Onboard compute / battery are limited**: the compute budget and power budget are hard constraints, same as an [embedded device](../embedded-device/README.md).
 - 🔴 **The network cannot be relied on**: warehouses have dead zones, roads have tunnels — **the safety loop must live entirely on the robot**.
 
 ## 4. Architecture Overview
@@ -74,7 +74,7 @@ But the business lives or dies not on "can it move," but on the **autonomy rate*
 - **Global planner**: computes a route from A to B on the map. *Why it's needed*: local vision walks into dead ends; you need a global view to set the overall direction.
 - **Local planner / obstacle avoidance**: recomputes the next few meters at high frequency, dodging people and goods that suddenly appear. *Why it's needed*: the world is dynamic and a global path goes stale within seconds; "keep the big direction, adjust the small moves in real time" is the essence of hierarchical planning.
 - **Controller (real-time loop)**: turns a trajectory into per-motor, per-millisecond commands. *Why it's needed*: the stability of a physical system rests on a fixed-cadence closed loop; this layer must run in a real-time environment, isolated from the "smart but jittery" layers above.
-- **Task state machine**: manages the "accept order → go to A → work → return to charge" business flow and its exception branches. *Why it's needed*: same as [embedded firmware](https://github.com/study8677/awesome-architecture/blob/main/templates/embedded-device/README.md) — an explicit state machine is the weapon that tames exception branches, and robots have exceptionally many (stuck / lost / low battery / human intrusion).
+- **Task state machine**: manages the "accept order → go to A → work → return to charge" business flow and its exception branches. *Why it's needed*: same as [embedded firmware](../embedded-device/README.md) — an explicit state machine is the weapon that tames exception branches, and robots have exceptionally many (stuck / lost / low battery / human intrusion).
 - **Message middleware (pub/sub)**: modules communicate decoupled through topics, with recording and replay support. *Why it's needed*: see Decision 2 — "being able to record the scene and replay it" is the lifeline of robotics development velocity.
 - **Safety controller (independent)**: E-stop, safety-zone detection, hardware-level power cutoff. *Why it's needed*: safety cannot depend on the assumption that "the software is all working."
 - **Fleet cloud platform**: dispatch, status monitoring, remote takeover, OTA. *Why it's needed*: the key to scale — 100 robots backstopped by 1–2 remote operators, not 10 on-site chaperones.
@@ -132,7 +132,7 @@ Core data: `maps` (occupancy grid / semantic map); `live topic streams` (sensors
 **Decision 1: Put the intelligence on the robot, or in the cloud? ⭐**
 - Cloud brain: unlimited compute, algorithms iterate fast, multi-robot global optimum; but network latency and outages directly threaten safety.
 - Onboard autonomy: the safety loop does not depend on the network; but compute is limited and updates must go through OTA.
-- **Leaning**: **safety and the motion loop 100% onboard; global dispatch, multi-robot coordination, and learning/training in the cloud.** Same dividing line as [industrial edge](https://github.com/study8677/awesome-architecture/blob/main/templates/industrial-edge/README.md): if being late causes harm, it does not cross the network.
+- **Leaning**: **safety and the motion loop 100% onboard; global dispatch, multi-robot coordination, and learning/training in the cloud.** Same dividing line as [industrial edge](../industrial-edge/README.md): if being late causes harm, it does not cross the network.
 
 **Decision 2: pub/sub middleware between modules, or direct function calls?**
 - Function calls: lowest latency, no middleware cost; but modules are welded together — no unit testing, no record-replay.
@@ -142,7 +142,7 @@ Core data: `maps` (occupancy grid / semantic map); `live topic streams` (sensors
 **Decision 3: Simulation first, or real robot first?**
 - Real-robot first: the most realistic; but one experiment takes half an hour, breaking a robot costs tens of thousands, and dangerous scenarios (hitting people) simply cannot be tested.
 - Simulation first: run thousands of simulation instances in parallel (equivalent to 1000x speed) for tens of thousands of trials, fabricate dangerous scenarios at will; but simulation and reality always diverge (the sim-to-real gap).
-- **Leaning**: **simulation as the CI gate (every change runs the regression scenario library), real robots for final acceptance**; feed scene bags back into simulation to keep shrinking the gap. Same idea as [eval-driven architecture](https://github.com/study8677/awesome-architecture/blob/main/tutorial/25-评测驱动把够好写进架构.md), except what is being evaluated is physical behavior.
+- **Leaning**: **simulation as the CI gate (every change runs the regression scenario library), real robots for final acceptance**; feed scene bags back into simulation to keep shrinking the gap. Same idea as [eval-driven architecture](../../tutorial/25-评测驱动把够好写进架构.md), except what is being evaluated is physical behavior.
 
 **Decision 4: Multi-robot coordination — central dispatch, or distributed negotiation?**
 - Central dispatch: globally optimal (who crosses the intersection first, how tasks split), logic that is easy to understand and debug.
@@ -164,7 +164,7 @@ Scaling a robotics business = robot count × scenario diversity × autonomy rate
 - **Human-robot shared zones**: speed limits, light and sound warnings, tiered slowdown by safety distance — regulations (e.g. machinery safety standards) impose hard requirements on collaborative settings.
 - **Safety boundaries of remote takeover**: teleoperation has network latency, so low speed only; takeover commands need authentication + auditing to prevent remote hijacking.
 - **Data compliance**: footage that robot cameras capture in warehouses / streets involves face and location privacy and must be anonymized before upload; mapping-grade geodata is strictly regulated in some countries (e.g. China).
-- **OTA security**: same as [automotive](https://github.com/study8677/awesome-architecture/blob/main/templates/automotive-ee/README.md): signing, canary rollout, conditional gates (only update while on the charging dock), rollback on failure.
+- **OTA security**: same as [automotive](../automotive-ee/README.md): signing, canary rollout, conditional gates (only update while on the charging dock), rollback on failure.
 
 ## 11. Common Pitfalls / Anti-patterns
 

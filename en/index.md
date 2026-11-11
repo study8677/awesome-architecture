@@ -10,6 +10,9 @@ hero:
       text: Start the tutorial →
       link: /en/tutorial/README
     - theme: alt
+      text: Browse 31 templates
+      link: /en/templates/README
+    - theme: alt
       text: Read 6 cases
       link: /en/cases/README
     - theme: alt
@@ -77,4 +80,4 @@ Before diving in, check your gut sense of 'architecture':
   explanation="Architecture = the decisions that, once made, are hard to change, affect the whole system, and decide whether it is *good*. Diagrams are how decisions get expressed; the *why* behind decisions is the soul."
 />
 
-Ready? 👉 [Start from Chapter 01](/en/tutorial/01-为什么先有架构思维), or browse [31 architecture maps](https://github.com/study8677/awesome-architecture/tree/main/en/templates) on GitHub.
+Ready? 👉 [Start from Chapter 01](/en/tutorial/01-为什么先有架构思维), or browse [31 architecture maps](/en/templates/README).

@@ -9,7 +9,7 @@
 
 A ticket-rush system = **the head-on battlefield where "extreme instantaneous concurrency" collides with "limited, scarce resources."**
 
-A million people fight over tens of thousands of tickets in the same second. It's the extreme version of an [e-commerce flash sale](https://github.com/study8677/awesome-architecture/blob/main/templates/ecommerce-platform/README.md), with one extra dimension: **a ticket is often "a specific seat"** (there's only one Row 3, Seat 12). Its entire design works to satisfy three nearly conflicting things at once: **never oversell, be as fair as possible, and don't crash.**
+A million people fight over tens of thousands of tickets in the same second. It's the extreme version of an [e-commerce flash sale](../ecommerce-platform/README.md), with one extra dimension: **a ticket is often "a specific seat"** (there's only one Row 3, Seat 12). Its entire design works to satisfy three nearly conflicting things at once: **never oversell, be as fair as possible, and don't crash.**
 
 ## 2. Business Essence: What Problem Does It Solve?
 
@@ -155,7 +155,7 @@ Core entities: `inventory / seat (status: available / locked / sold)`; `order (s
 - 🔴 **Anti-bot / anti-script ticket grabbing**: CAPTCHA, device fingerprinting, risk control, real-name + purchase limits, to fight scalpers — this is the technical line of defense for fairness.
 - **Overselling protection**: atomic decrement is a security matter (overselling = selling a non-existent asset).
 - **Anti-scraping interfaces**: pre-sale probing and remaining-tickets-scraping interfaces must all be rate-limited.
-- **Payment security**: see the [payment system template](https://github.com/study8677/awesome-architecture/blob/main/templates/payment-system/README.md).
+- **Payment security**: see the [payment system template](../payment-system/README.md).
 
 ## 11. Common Pitfalls / Anti-patterns
 
@@ -175,7 +175,7 @@ Core entities: `inventory / seat (status: available / locked / sold)`; `order (s
 
 ## 13. Reusable Takeaways
 
-- 💡 **"Holding the flood outside the door" is more fundamental than "adding machines inside it."** Queuing / waiting rooms / rate-limiting are the first choice for handling instantaneous spike traffic — this shares roots with [message-queue peak-shaving](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md).
+- 💡 **"Holding the flood outside the door" is more fundamental than "adding machines inside it."** Queuing / waiting rooms / rate-limiting are the first choice for handling instantaneous spike traffic — this shares roots with [message-queue peak-shaving](../../tutorial/04-十大核心架构模式.md).
 - 💡 **Atomic operations are the lifeblood of preventing overselling**: any scenario of "fighting over a limited resource" (flash sale, coupon rush, seat rush) must use atomic decrement, not "read-modify-write."
 - 💡 **"Hold + timeout release" is the universal pattern for handling "temporarily holding a scarce resource"**: seat reservation, inventory reservation, distributed locks — all are it.
 - 💡 **Put super-hot data in memory**: making one database row bear a million concurrent writes is a doomed bottleneck; only in-memory atomic operations can take it.

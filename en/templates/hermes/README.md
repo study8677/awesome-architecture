@@ -9,7 +9,7 @@
 
 Hermes = **an always-on resident agent running on your own server**: it takes over your messaging accounts (WeChat / Telegram / email…), remembers everything you've said before, and distills "how I got this done" into reusable skills — **it understands you more and does more, the more you use it.**
 
-What sets it apart from a [general Agent platform](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-agent-platform/README.md) is "resident + growth": general Agents are mostly "one task, then discarded," starting from zero every time; Hermes is **a long-lived process** with persistent cross-session memory and a skill library it keeps accumulating. The question it answers isn't "how do I automate this one task," but "**how does an agent accompany you and grow over the long run, instead of being amnesiac every time.**"
+What sets it apart from a [general Agent platform](../ai-agent-platform/README.md) is "resident + growth": general Agents are mostly "one task, then discarded," starting from zero every time; Hermes is **a long-lived process** with persistent cross-session memory and a skill library it keeps accumulating. The question it answers isn't "how do I automate this one task," but "**how does an agent accompany you and grow over the long run, instead of being amnesiac every time.**"
 
 ## 2. The Business Essence: What Problem It Solves
 
@@ -178,7 +178,7 @@ This is the linchpin of Hermes's entire memory design, and an explicit trade of 
   - **A knowledge-graph provider**: structure memory into entities / relations to support concept-level queries.
   - But embeddings bring **complexity / latency / disk footprint / migration risk** (swap the model and all historical vectors must be recomputed). For an assistant meant to run resident on a $5 VPS and serve a single user, these costs may not pay off — **so the default sticks with FTS5 and leaves the semantic upgrade as an optional provider.**
 
-> Remember this trade in one line: **FTS5 makes memory "runnable and easy to host," at the cost of "weak semantic recall."** That's precisely the flip side of what [vector databases](https://github.com/study8677/awesome-architecture/blob/main/templates/vector-database/README.md) trade away with ANN — vectors give you concept-level semantic recall, at the cost of memory, ops, and a separate index system to run. Hermes chose "simple and self-hostable" first, leaving "semantic recall quality" for those willing to pay the complexity to upgrade. To understand the ceiling of retrieval quality more deeply, see [RAG Knowledge Base](https://github.com/study8677/awesome-architecture/blob/main/templates/rag-knowledge-base/README.md).
+> Remember this trade in one line: **FTS5 makes memory "runnable and easy to host," at the cost of "weak semantic recall."** That's precisely the flip side of what [vector databases](../vector-database/README.md) trade away with ANN — vectors give you concept-level semantic recall, at the cost of memory, ops, and a separate index system to run. Hermes chose "simple and self-hostable" first, leaving "semantic recall quality" for those willing to pay the complexity to upgrade. To understand the ceiling of retrieval quality more deeply, see [RAG Knowledge Base](../rag-knowledge-base/README.md).
 
 **Decision 2: Self-growth / auto-authoring skills — should it create executable skills on its own? ⭐**
 - **Benefit**: compounding experience, stronger over time; complex-task solutions no longer evaporate one-off but become executable skills reusable via `terminal` / `execute_code`.
@@ -236,7 +236,7 @@ This is the linchpin of Hermes's entire memory design, and an explicit trade of 
 
 - 💡 **Persistent memory + automatic skills = knowledge that compounds for an agent.** "Remembers" + "learns" are the two pillars that turn a one-shot agent into a "long-term asset" — value accumulates along the time axis.
 - 💡 **Get running with the simplest retrieval first, then upgrade by recall quality.** FTS5 brings memory online with zero dependencies; only when the semantic gap actually hurts do you adopt hybrid / vector / graph — the same restraint as "if a single machine will do, don't go to a cluster."
-- 💡 **Self-growth must come with the brakes of observability / interruptibility / approval.** For any system that "can create capabilities on its own and execute them," a brake is not optional; this echoes the [Agent platform](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-agent-platform/README.md) line, "if you set it free, you must bolt on a brake."
+- 💡 **Self-growth must come with the brakes of observability / interruptibility / approval.** For any system that "can create capabilities on its own and execute them," a brake is not optional; this echoes the [Agent platform](../ai-agent-platform/README.md) line, "if you set it free, you must bolt on a brake."
 - 💡 **System-prompt stability is an architectural lever for saving money.** A stable prefix = high cache-hit rate = a sharp cost drop; the cost is giving up mid-flight hot-updates — a trade that pays off well in a high-frequency, long-term scenario.
 - 💡 **Self-hosting trades data sovereignty for operational responsibility.** The flip side of "all data in your own hands" is that security, backup, and isolation are all on you — trusting only the allowlist by default is the premise that makes the model hold.
 
@@ -253,7 +253,7 @@ This is the linchpin of Hermes's entire memory design, and an explicit trade of 
 
 ## References & Further Reading
 
-> This template is distilled from the following **official resources**. Hermes Agent is open-sourced by Nous Research (MIT); to get hands-on, read the repo and the official architecture docs directly. For a peer always-on agent, see the sister piece [OpenClaw](https://github.com/study8677/awesome-architecture/blob/main/en/templates/openclaw/README.md).
+> This template is distilled from the following **official resources**. Hermes Agent is open-sourced by Nous Research (MIT); to get hands-on, read the repo and the official architecture docs directly. For a peer always-on agent, see the sister piece [OpenClaw](../openclaw/README.md).
 
 **🔧 Official prototype and docs:**
 - [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — the official repo README, the entry to Hermes Agent's source.
@@ -264,11 +264,11 @@ This is the linchpin of Hermes's entire memory design, and an explicit trade of 
 - [Official landing page: The Agent That Grows With You](https://hermes-agent.nousresearch.com/) — the "grows with you" product positioning.
 
 **🔗 Further reading (this repo):**
-- [OpenClaw](https://github.com/study8677/awesome-architecture/blob/main/en/templates/openclaw/README.md) — a peer self-hosted always-on agent; the sister piece to compare against.
-- [Vector Database](https://github.com/study8677/awesome-architecture/blob/main/templates/vector-database/README.md) — the deep dive on "the vector / ANN side" of FTS5 vs vector retrieval.
-- [RAG Knowledge Base](https://github.com/study8677/awesome-architecture/blob/main/templates/rag-knowledge-base/README.md) — retrieval quality sets the ceiling; understand the ceiling of memory recall.
-- [AI Agent / Workflow Platform](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-agent-platform/README.md) — general Agent orchestration and "bolting a brake onto autonomy."
-- [Data and State](https://github.com/study8677/awesome-architecture/blob/main/tutorial/05-数据与状态.md) — the fundamentals of SQLite / persistence / state management.
+- [OpenClaw](../openclaw/README.md) — a peer self-hosted always-on agent; the sister piece to compare against.
+- [Vector Database](../vector-database/README.md) — the deep dive on "the vector / ANN side" of FTS5 vs vector retrieval.
+- [RAG Knowledge Base](../rag-knowledge-base/README.md) — retrieval quality sets the ceiling; understand the ceiling of memory recall.
+- [AI Agent / Workflow Platform](../ai-agent-platform/README.md) — general Agent orchestration and "bolting a brake onto autonomy."
+- [Data and State](../../tutorial/05-数据与状态.md) — the fundamentals of SQLite / persistence / state management.
 
 ---
 

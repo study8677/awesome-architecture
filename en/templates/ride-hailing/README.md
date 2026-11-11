@@ -141,7 +141,7 @@ The core entities: `driver location (high-frequency updates, ephemeral)`; `trip 
 
 - **First bottleneck: the location write flood.** → Fix: an in-memory geo-index + sharding by region; the write pressure is naturally scattered by geography.
 - **Second bottleneck: local supply/demand explosion** (an airport / a concert letting out). → Fix: regional isolation keeps it from affecting elsewhere + queuing + dynamic pricing to shave the peak.
-- **Third bottleneck: a massive number of long-lived connections** (one per online user). → Fix: scale the connection ingest layer horizontally, with region-local ingest. See the [Realtime Chat template](https://github.com/study8677/awesome-architecture/blob/main/templates/realtime-chat/README.md).
+- **Third bottleneck: a massive number of long-lived connections** (one per online user). → Fix: scale the connection ingest layer horizontally, with region-local ingest. See the [Realtime Chat template](../realtime-chat/README.md).
 - **Cross-region is nearly independent**: geo-sharding makes global expansion close to "replicate a copy into a new region," which is its sweetest spot.
 
 ## 10. Security and compliance highlights
@@ -149,7 +149,7 @@ The core entities: `driver location (high-frequency updates, ephemeral)`; `trip 
 - 🔴 **Location privacy**: real-time location is extremely sensitive data — strict authorization, minimized retention, encrypted in transit; reduce precision after a trip ends.
 - **Personal safety**: trip audio recording, a one-tap emergency button, traceable trajectories, emergency contacts — these are baseline requirements for this kind of product, not add-ons.
 - **Fraud**: order brushing, fake GPS (location spoofing), driver-rider collusion to defraud subsidies — needs trajectory-consistency checks and fraud control.
-- **Payment security**: see the [Payment System template](https://github.com/study8677/awesome-architecture/blob/main/templates/payment-system/README.md).
+- **Payment security**: see the [Payment System template](../payment-system/README.md).
 
 ## 11. Common pitfalls / anti-patterns
 

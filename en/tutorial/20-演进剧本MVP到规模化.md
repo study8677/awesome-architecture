@@ -1,12 +1,12 @@
 # 20 · Evolution Playbook: MVP → Scale
 
-> The thesis in one line: **the "first version" designed in [ch. 19](https://github.com/study8677/awesome-architecture/blob/main/tutorial/19-完整设计演练中等复杂度系统.md) will never be its final form. This chapter follows that same AI customer-service system through its three lives — watching how quantified signals push it to grow, one stage at a time, and how every "should we touch this?" is answered with a ruler, not a gut feeling.**
+> The thesis in one line: **the "first version" designed in [ch. 19](19-完整设计演练中等复杂度系统.md) will never be its final form. This chapter follows that same AI customer-service system through its three lives — watching how quantified signals push it to grow, one stage at a time, and how every "should we touch this?" is answered with a ruler, not a gut feeling.**
 
 ---
 
 > **🎯 Practice track, ch. 3 · This chapter drills one thing**
 >
-> Drill **evolution judgment**: not "how to design," but "**when to upgrade, when to hold back**." It picks up from [ch. 08](https://github.com/study8677/awesome-architecture/blob/main/tutorial/08-架构决策记录与演进.md) (ADRs + when to evolve) and the [Appendix · When to Evolve (trigger signals)](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md), and lands them on the AI customer-service system from [ch. 19](https://github.com/study8677/awesome-architecture/blob/main/tutorial/19-完整设计演练中等复杂度系统.md).
+> Drill **evolution judgment**: not "how to design," but "**when to upgrade, when to hold back**." It picks up from [ch. 08](08-架构决策记录与演进.md) (ADRs + when to evolve) and the [Appendix · When to Evolve (trigger signals)](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md), and lands them on the AI customer-service system from [ch. 19](19-完整设计演练中等复杂度系统.md).
 >
 > | By the end you should be able to | This chapter trains it via |
 > |---|---|
@@ -18,7 +18,7 @@
 
 ## Intro: don't force an MVP into the mature-phase blueprint
 
-[Ch. 07](https://github.com/study8677/awesome-architecture/blob/main/tutorial/07-从0到1设计一个系统.md) said it, and it bites harder in AI systems: **architecture grows — never start by building toward the "tens-of-millions, multi-tenant" end state.** The diagram from [ch. 19](https://github.com/study8677/awesome-architecture/blob/main/tutorial/19-完整设计演练中等复杂度系统.md) is your **mental target**, not the **day-one look**.
+[Ch. 07](07-从0到1设计一个系统.md) said it, and it bites harder in AI systems: **architecture grows — never start by building toward the "tens-of-millions, multi-tenant" end state.** The diagram from [ch. 19](19-完整设计演练中等复杂度系统.md) is your **mental target**, not the **day-one look**.
 
 In the real world, this AI customer-service system grows like this:
 
@@ -36,7 +36,7 @@ In the real world, this AI customer-service system grows like this:
         └────────── every step is pushed by real signals, not feelings ──────────┘
 ```
 
-> **The discipline of this chapter (and the taste from [ch. 09](https://github.com/study8677/awesome-architecture/blob/main/tutorial/09-架构品味.md)): no signal, no move.** Upgrading without a trigger is almost always over-engineering or chasing novelty. Each of the three stages below starts with **trigger signals**, then gives **upgrade actions**, and closes with an **ADR**.
+> **The discipline of this chapter (and the taste from [ch. 09](09-架构品味.md)): no signal, no move.** Upgrading without a trigger is almost always over-engineering or chasing novelty. Each of the three stages below starts with **trigger signals**, then gives **upgrade actions**, and closes with an **ADR**.
 
 ---
 
@@ -52,9 +52,9 @@ In the real world, this AI customer-service system grows like this:
 | **Refunds** | **Model only answers questions, does not auto-refund** — anything touching money goes to **human approval** first |
 | Cost | No routing / caching yet — **prove people use it before talking about saving money** |
 
-Note the last two rows: **MVP hands the most dangerous things directly to humans.** That's not laziness — it's the most extreme, most friction-free version of [ch. 19](https://github.com/study8677/awesome-architecture/blob/main/tutorial/19-完整设计演练中等复杂度系统.md)'s "keep uncertainty outside the side-effect boundary" — **the human is the gate**. Once volume grows, automate the safe parts.
+Note the last two rows: **MVP hands the most dangerous things directly to humans.** That's not laziness — it's the most extreme, most friction-free version of [ch. 19](19-完整设计演练中等复杂度系统.md)'s "keep uncertainty outside the side-effect boundary" — **the human is the gate**. Once volume grows, automate the safe parts.
 
-> This version deliberately racks up **conscious technical debt** (no cache, no routing, coarse chunking, manual refunds) — but [ch. 08](https://github.com/study8677/awesome-architecture/blob/main/tutorial/08-架构决策记录与演进.md) said it: **intentional MVP debt is often the right call, as long as you know what you owe and write it down.**
+> This version deliberately racks up **conscious technical debt** (no cache, no routing, coarse chunking, manual refunds) — but [ch. 08](08-架构决策记录与演进.md) said it: **intentional MVP debt is often the right call, as long as you know what you owe and write it down.**
 
 **First ADR — recording "why so rough":**
 
@@ -120,7 +120,7 @@ The MVP is working, users are growing, and **these signals all turn red at once*
    (no eval)                     ──▶  build first eval set: watch retrieval recall + answer quality
 ```
 
-Note the "small-amount auto-refund": this is the moment we actually use the **deterministic + idempotent + state-machine** gate designed in [ch. 19](https://github.com/study8677/awesome-architecture/blob/main/tutorial/19-完整设计演练中等复杂度系统.md) — **human review shrinks from "every transaction" to "large amounts only"**, absorbing the volume while protecting the money.
+Note the "small-amount auto-refund": this is the moment we actually use the **deterministic + idempotent + state-machine** gate designed in [ch. 19](19-完整设计演练中等复杂度系统.md) — **human review shrinks from "every transaction" to "large amounts only"**, absorbing the volume while protecting the money.
 
 **Two ADRs — recording the two most critical changes, cost and refunds:**
 
@@ -166,7 +166,7 @@ Note the "small-amount auto-refund": this is the moment we actually use the **de
 └────────────────────────────────────────────────────────────┘
 ```
 
-> 💡 Look at the "Context" fields of ADR-002 and ADR-003 — **every entry is a quantified signal; not one says "I have a feeling we should upgrade."** That's the ruler from [ch. 08](https://github.com/study8677/awesome-architecture/blob/main/tutorial/08-架构决策记录与演进.md).
+> 💡 Look at the "Context" fields of ADR-002 and ADR-003 — **every entry is a quantified signal; not one says "I have a feeling we should upgrade."** That's the ruler from [ch. 08](08-架构决策记录与演进.md).
 
 ---
 
@@ -179,7 +179,7 @@ The growth stage has stabilized, the business keeps growing, and **a new class o
 | **Onboarding multiple merchant tenants** | Each tenant's knowledge base must not bleed into another's | Missing tenant isolation |
 | **A single model provider outage takes the entire customer-service platform down** | Availability step-change ([Appendix · When to Evolve](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md): eliminate single points) | Model calls are a SPOF |
 | **After a model upgrade or prompt change, production quality silently regresses** | AI-specific! Nondeterminism causes **quality drift** | No eval gate in CI |
-| **Traffic spikes during promotions + cost continues to grow** | The mechanics of scale ([ch. 13](https://github.com/study8677/awesome-architecture/blob/main/tutorial/13-规模化的力学.md)) | Single region, no elasticity |
+| **Traffic spikes during promotions + cost continues to grow** | The mechanics of scale ([ch. 13](13-规模化的力学.md)) | Single region, no elasticity |
 
 **Upgrade actions:**
 
@@ -228,7 +228,7 @@ The growth stage has stabilized, the business keeps growing, and **a new class o
 └────────────────────────────────────────────────────────────┘
 ```
 
-> **Architectural wisdom**: traditional systems guard quality with "same input → same output" assertions; **AI systems have had that bedrock pulled out from under them ([ch. 17](https://github.com/study8677/awesome-architecture/blob/main/tutorial/17-大模型时代的架构判断.md)), so quality can only be guarded by "eval set + scoring" over a distribution.** That's why "eval as a gate" for AI systems isn't a nice-to-have — it's the **brakes against regression during evolution**. Without it, every "model upgrade" is a blind gamble.
+> **Architectural wisdom**: traditional systems guard quality with "same input → same output" assertions; **AI systems have had that bedrock pulled out from under them ([ch. 17](17-大模型时代的架构判断.md)), so quality can only be guarded by "eval set + scoring" over a distribution.** That's why "eval as a gate" for AI systems isn't a nice-to-have — it's the **brakes against regression during evolution**. Without it, every "model upgrade" is a blind gamble.
 
 ---
 
@@ -269,17 +269,17 @@ The growth stage has stabilized, the business keeps growing, and **a new class o
 
 - **Don't force the mature-phase blueprint onto an MVP**: the same AI customer-service system has three lives — a call-API MVP → a growth phase with routing / caching / hybrid retrieval / small-amount auto-refunds → a scale phase with gateway / multi-tenant / eval gate / multi-active.
 - **MVP hands the most dangerous things to humans**: all-manual refunds are the most friction-free version of "keep uncertainty outside the side-effect boundary"; automate the safe parts only once volume warrants it.
-- **Every upgrade is triggered by quantified signals, not feelings**: billing, P99, complaint rate, human-review backlog, provider SPOF, quality drift — no signal, no move (the taste of [ch. 08](https://github.com/study8677/awesome-architecture/blob/main/tutorial/08-架构决策记录与演进.md) / [ch. 09](https://github.com/study8677/awesome-architecture/blob/main/tutorial/09-架构品味.md)).
+- **Every upgrade is triggered by quantified signals, not feelings**: billing, P99, complaint rate, human-review backlog, provider SPOF, quality drift — no signal, no move (the taste of [ch. 08](08-架构决策记录与演进.md) / [ch. 09](09-架构品味.md)).
 - **Write one ADR for every upgrade**: the Context field is all signals — that's the decision audit trail.
 - **Two signals unique to AI system evolution**: **cost drift** (token burn scales linearly) and **quality drift** (nondeterminism causes silent regressions) — managed with "cost monitoring + model routing" and "eval as a gate," respectively.
 
-> **Bridging forward**: as you reach the tail end of the scale stage, a new problem surfaces: orchestration, RAG, tools, billing, refunds — all crammed into **one deployment unit** for speed. Now, changing anything breaks everything, nobody dares touch it, and multiple teams block each other — the "org / efficiency" red lights in the [Appendix · When to Evolve](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md). The next chapter, [21 · Splitting & Migration in Practice](https://github.com/study8677/awesome-architecture/blob/main/tutorial/21-拆分与迁移实战.md), swaps the engine on this **AI customer-service system mid-flight**: using the strangler fig, parallel run, and zero-downtime migration from [ch. 14](https://github.com/study8677/awesome-architecture/blob/main/tutorial/14-演进与拆分大型系统.md) to safely pull it apart piece by piece.
+> **Bridging forward**: as you reach the tail end of the scale stage, a new problem surfaces: orchestration, RAG, tools, billing, refunds — all crammed into **one deployment unit** for speed. Now, changing anything breaks everything, nobody dares touch it, and multiple teams block each other — the "org / efficiency" red lights in the [Appendix · When to Evolve](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md). The next chapter, [21 · Splitting & Migration in Practice](21-拆分与迁移实战.md), swaps the engine on this **AI customer-service system mid-flight**: using the strangler fig, parallel run, and zero-downtime migration from [ch. 14](14-演进与拆分大型系统.md) to safely pull it apart piece by piece.
 
 ---
 
 ## Related links
 
-- The system being evolved: [19 · Full Design Walkthrough: Medium Complexity](https://github.com/study8677/awesome-architecture/blob/main/tutorial/19-完整设计演练中等复杂度系统.md) — this chapter evolves it
-- Core methodology: [08 · ADRs & Evolution](https://github.com/study8677/awesome-architecture/blob/main/tutorial/08-架构决策记录与演进.md) (ADRs + when to evolve), [Appendix · When to Evolve (trigger signals)](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md) (quantified signal quick-reference)
-- AI-specific constraints: [17 · Architecting in the Age of LLMs](https://github.com/study8677/awesome-architecture/blob/main/tutorial/17-大模型时代的架构判断.md) (cost / nondeterminism)
-- Scale mechanics: [13 · The Mechanics of Scale](https://github.com/study8677/awesome-architecture/blob/main/tutorial/13-规模化的力学.md) · compare with the [AI Chat Product](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-chat-product/README.md) evolution roadmap
+- The system being evolved: [19 · Full Design Walkthrough: Medium Complexity](19-完整设计演练中等复杂度系统.md) — this chapter evolves it
+- Core methodology: [08 · ADRs & Evolution](08-架构决策记录与演进.md) (ADRs + when to evolve), [Appendix · When to Evolve (trigger signals)](https://github.com/study8677/awesome-architecture/blob/main/tutorial/演进触发信号.md) (quantified signal quick-reference)
+- AI-specific constraints: [17 · Architecting in the Age of LLMs](17-大模型时代的架构判断.md) (cost / nondeterminism)
+- Scale mechanics: [13 · The Mechanics of Scale](13-规模化的力学.md) · compare with the [AI Chat Product](../templates/ai-chat-product/README.md) evolution roadmap

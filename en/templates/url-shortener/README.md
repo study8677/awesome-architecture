@@ -133,8 +133,8 @@ The core entities are dead simple: `mapping(short_key, long_url, creator, expira
 ## 9. Scaling and bottlenecks
 
 - **First bottleneck: read traffic floods you.** → Fix: multi-level caching (local + distributed KV), push hot short links to the CDN / edge nodes to redirect directly, and scale the stateless read service horizontally.
-- **Second bottleneck: the central ID generator becomes a single point for writes.** → Fix: the segment pattern (wholesale a batch of IDs at a time to each node for local use) or the snowflake algorithm (each node generates non-colliding IDs on its own). See the ID-generation approach in the [E-commerce Platform template](https://github.com/study8677/awesome-architecture/blob/main/templates/ecommerce-platform/README.md).
-- **Third bottleneck: a flood of click events** (a viral link gets frantically reshared). → Fix: a message queue to absorb the peak (see [04 · Message queues / async](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md)), with background batch aggregation.
+- **Second bottleneck: the central ID generator becomes a single point for writes.** → Fix: the segment pattern (wholesale a batch of IDs at a time to each node for local use) or the snowflake algorithm (each node generates non-colliding IDs on its own). See the ID-generation approach in the [E-commerce Platform template](../ecommerce-platform/README.md).
+- **Third bottleneck: a flood of click events** (a viral link gets frantically reshared). → Fix: a message queue to absorb the peak (see [04 · Message queues / async](../../tutorial/04-十大核心架构模式.md)), with background batch aggregation.
 - **Fourth bottleneck: the mapping table grows too large.** → Fix: hash-shard by short_key. Because it's pure point lookups, sharding is extremely clean (no cross-shard queries).
 
 ## 10. Security and compliance highlights

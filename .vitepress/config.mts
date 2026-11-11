@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import { defineConfig } from 'vitepress'
 
 // ---- 中文侧边栏 ----
@@ -64,6 +66,57 @@ const zhTutorialOrg = [
 
 const zhTutorialTraining = [
   { text: 'T01 · 训练方案不是算法排行榜：先把决策分层', link: '/tutorial/T01-训练方案不是算法排行榜先把决策分层' },
+]
+
+// ---- 英文侧边栏 ----
+const enTutorial = [
+  { text: 'Overview', link: '/en/tutorial/README' },
+  { text: '01 · Why architecture comes first', link: '/en/tutorial/01-为什么先有架构思维' },
+  { text: "02 · The architect's thinking framework", link: '/en/tutorial/02-架构师的思考框架' },
+  { text: '03 · Reading & drawing diagrams', link: '/en/tutorial/03-读懂与画好架构图' },
+  { text: '04 · Ten core patterns', link: '/en/tutorial/04-十大核心架构模式' },
+  { text: '05 · Data & state', link: '/en/tutorial/05-数据与状态' },
+  { text: '06 · Quality attributes & trade-offs', link: '/en/tutorial/06-质量属性与取舍' },
+  { text: '07 · Designing from 0 to 1', link: '/en/tutorial/07-从0到1设计一个系统' },
+  { text: '08 · ADRs & evolution', link: '/en/tutorial/08-架构决策记录与演进' },
+  { text: '09 · Architectural taste', link: '/en/tutorial/09-架构品味' },
+]
+
+const enTutorialAdvanced = [
+  { text: '10 · Distributed systems: hard truths', link: '/en/tutorial/10-分布式系统的硬道理' },
+  { text: '11 · The engineering of data consistency', link: '/en/tutorial/11-数据一致性工程' },
+  { text: '12 · Designing for failure: resilience', link: '/en/tutorial/12-为失败而设计' },
+  { text: '13 · The mechanics of scale', link: '/en/tutorial/13-规模化的力学' },
+  { text: '14 · Evolving & splitting large systems', link: '/en/tutorial/14-演进与拆分大型系统' },
+  { text: '15 · Organization as architecture', link: '/en/tutorial/15-组织即架构' },
+  { text: '16 · Security & multi-tenancy', link: '/en/tutorial/16-安全与多租户架构' },
+  { text: '17 · Architecting in the age of LLMs', link: '/en/tutorial/17-大模型时代的架构判断' },
+]
+
+const enTutorialPractice = [
+  { text: '18 · Reading the map: deconstruct unfamiliar systems', link: '/en/tutorial/18-读地图用框架拆解陌生系统' },
+  { text: '19 · Full design walkthrough: medium complexity', link: '/en/tutorial/19-完整设计演练中等复杂度系统' },
+  { text: '20 · Evolution playbook: MVP → scale', link: '/en/tutorial/20-演进剧本MVP到规模化' },
+  { text: '21 · Splitting & migration in practice', link: '/en/tutorial/21-拆分与迁移实战' },
+  { text: '22 · AI-native system design', link: '/en/tutorial/22-AI原生系统设计' },
+]
+
+const enTutorialCollab = [
+  { text: '23 · Spec as architecture: constraints for AI', link: '/en/tutorial/23-规格即架构约束怎么写给AI' },
+  { text: '24 · Review checklist: what AI output omits by default', link: '/en/tutorial/24-审查清单AI产出默认缺什么' },
+  { text: '25 · Eval-driven: bake "good enough" into architecture', link: '/en/tutorial/25-评测驱动把够好写进架构' },
+  { text: '26 · Collaboration decision tree: when to vibe, when to spec-first', link: '/en/tutorial/26-协作决策树何时vibe何时spec-first' },
+]
+
+const enTutorialStack = [
+  { text: '27 · Languages & backend frameworks', link: '/en/tutorial/27-编程语言与后端框架选型' },
+  { text: '28 · Databases & storage', link: '/en/tutorial/28-数据库与存储选型' },
+  { text: '29 · Cache, queues & events', link: '/en/tutorial/29-缓存消息队列与事件系统选型' },
+  { text: '30 · APIs & service communication', link: '/en/tutorial/30-API与服务通信选型' },
+  { text: '31 · Cloud native & deployment', link: '/en/tutorial/31-云原生与部署平台选型' },
+  { text: '32 · Observability & reliability', link: '/en/tutorial/32-可观测性与可靠性技术栈选型' },
+  { text: '33 · AI infrastructure', link: '/en/tutorial/33-AI基础设施技术栈选型' },
+  { text: '34 · Technology selection decision tree', link: '/en/tutorial/34-技术选型决策树' },
 ]
 
 const enTutorialTraining = [
@@ -136,11 +189,89 @@ const zhIndustrial = [
   { text: '机器人系统', link: '/templates/robotics/README' },
 ]
 
+const enCommon = [
+  { text: 'AI Chat Product', link: '/en/templates/ai-chat-product/README' },
+  { text: 'Browser Extension', link: '/en/templates/browser-extension/README' },
+  { text: 'Standard Web App', link: '/en/templates/standard-web-app/README' },
+  { text: 'Mobile App', link: '/en/templates/mobile-app/README' },
+  { text: 'E-commerce Platform', link: '/en/templates/ecommerce-platform/README' },
+  { text: 'Social Feed', link: '/en/templates/social-feed/README' },
+  { text: 'Video Streaming', link: '/en/templates/video-streaming/README' },
+  { text: 'Realtime Chat', link: '/en/templates/realtime-chat/README' },
+  { text: 'URL Shortener', link: '/en/templates/url-shortener/README' },
+  { text: 'Payment System', link: '/en/templates/payment-system/README' },
+  { text: 'Search Engine', link: '/en/templates/search-engine/README' },
+  { text: 'Ride-Hailing', link: '/en/templates/ride-hailing/README' },
+  { text: 'Collaborative Doc', link: '/en/templates/collaborative-doc/README' },
+  { text: 'Cloud Storage', link: '/en/templates/cloud-storage/README' },
+  { text: 'Notification System', link: '/en/templates/notification-system/README' },
+  { text: 'Online Ticketing', link: '/en/templates/online-ticketing/README' },
+]
+
+const enAI = [
+  { text: 'AI Gateway / Relay', link: '/en/templates/ai-gateway/README' },
+  { text: 'RAG Knowledge Base', link: '/en/templates/rag-knowledge-base/README' },
+  { text: 'AI Agent / Workflow', link: '/en/templates/ai-agent-platform/README' },
+  { text: 'Inference Serving', link: '/en/templates/inference-serving/README' },
+  { text: 'Vector Database', link: '/en/templates/vector-database/README' },
+]
+
+const enAgent = [
+  { text: 'Claude Code', link: '/en/templates/claude-code/README' },
+  { text: 'OpenAI Codex', link: '/en/templates/codex/README' },
+  { text: 'OpenClaw (the lobster)', link: '/en/templates/openclaw/README' },
+  { text: 'Hermes', link: '/en/templates/hermes/README' },
+]
+
+const enPrompt = [
+  { text: 'System Prompt Architecture', link: '/en/templates/system-prompt-architecture/README' },
+]
+
+const enIndustrial = [
+  { text: 'Embedded Device Firmware', link: '/en/templates/embedded-device/README' },
+  { text: 'IoT Device Platform', link: '/en/templates/iot-platform/README' },
+  { text: 'Industrial Edge / SCADA', link: '/en/templates/industrial-edge/README' },
+  { text: 'Automotive E/E', link: '/en/templates/automotive-ee/README' },
+  { text: 'Robotics System', link: '/en/templates/robotics/README' },
+]
+
 // ── 站点级常量:被 sitemap、canonical、Open Graph 卡片复用,避免多处硬编码 ──
 const SITE_URL = 'https://study8677.github.io/awesome-architecture/'
 const SITE_TITLE = 'Awesome Architecture'
 const SITE_DESC =
   '专注「架构思维」的中英双语知识库:40 章教程 + 31 张真实系统架构地图 + 6 个端到端案例。'
+const SITE_DESC_EN =
+  'A bilingual knowledge base focused on architectural thinking: 40 tutorial chapters + 31 real-system architecture maps + 6 end-to-end cases.'
+
+function extractPageDescription(relativePath: string): string {
+  try {
+    const raw = fs.readFileSync(path.resolve(process.cwd(), relativePath), 'utf-8')
+    const body = raw
+      .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
+      .replace(/<!--[\s\S]*?-->/g, '')
+    const quoteLines: string[] = []
+    let inQuote = false
+    for (const line of body.split(/\r?\n/)) {
+      const trimmed = line.trim()
+      if (trimmed.startsWith('>')) {
+        inQuote = true
+        const text = trimmed.replace(/^>+\s*/, '').trim()
+        if (text) quoteLines.push(text)
+      } else if (inQuote) {
+        break
+      }
+    }
+    if (!quoteLines.length) return ''
+    return quoteLines
+      .join(' ')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/[*_`]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+  } catch {
+    return ''
+  }
+}
 
 export default defineConfig({
   title: SITE_TITLE,
@@ -155,8 +286,16 @@ export default defineConfig({
   sitemap: {
     hostname: SITE_URL,
   },
-  srcExclude: [],
+  srcExclude: ['README.md', 'README_en.md', 'CONTRIBUTING.md', 'templates/_TEMPLATE.md'],
   head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f8a6b'/%3E%3Cpath d='M32 12L14 22v20l18 10 18-10V22L32 12zm0 6.8l11.2 6.2L32 31.2 20.8 25 32 18.8zm-13 11.4l10.5 5.8v11.6L19 41.8V30.2zm26 0v11.6l-10.5 5.8V36l10.5-5.8z' fill='%23fff'/%3E%3C/svg%3E",
+      },
+    ],
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     // 站点级 OG/Twitter 默认值(不含 title/description —— 那两项由下方 transformPageData
     // 按页注入,避免同一页出现两个 og:title 这类重复标签)。
@@ -168,8 +307,7 @@ export default defineConfig({
   ],
 
   // ── 逐页注入 canonical + Open Graph/Twitter 的标题与描述 ──
-  // 背景:此前 164 个页面共用同一套 og:title/og:description,分享到任何平台卡片都长一个样,
-  // 且全站无 canonical。这里按每页真实标题/描述生成,并补上规范链接,利于 SEO 与社交分享。
+  // 按每页真实标题/首段导读引用生成页面级 description,并补上规范链接,利于 SEO 与社交分享。
   transformPageData(pageData) {
     // 源文件相对路径 → cleanUrls 后的线上路径:
     //   index.md              → ''                    (站点根)
@@ -179,9 +317,16 @@ export default defineConfig({
       .replace(/(^|\/)index\.md$/, '$1')
       .replace(/\.md$/, '')
     const url = SITE_URL + cleanPath
+    const isEn = pageData.relativePath.startsWith('en/')
     const title = pageData.title ? `${pageData.title} · ${SITE_TITLE}` : SITE_TITLE
     const description =
-      pageData.description || pageData.frontmatter?.description || SITE_DESC
+      pageData.description ||
+      pageData.frontmatter?.description ||
+      pageData.frontmatter?.hero?.tagline ||
+      extractPageDescription(pageData.relativePath) ||
+      (isEn ? SITE_DESC_EN : SITE_DESC)
+
+    pageData.description = description
 
     const head = (pageData.frontmatter.head ??= [])
     head.push(
@@ -223,6 +368,7 @@ export default defineConfig({
             { text: '🧠 基础模型训练决策专题', items: zhTutorialTraining },
           ],
           '/templates/': [
+            { text: '🗺️ 架构模板', items: [{ text: '模板总览', link: '/templates/README' }] },
             { text: '🗺️ 经典 / 通用系统', items: zhCommon },
             { text: '🤖 AI 原生系统', items: zhAI },
             { text: '🦾 AI 编码 / 自治 Agent', items: zhAgent },
@@ -264,153 +410,47 @@ export default defineConfig({
       label: 'English',
       lang: 'en',
       link: '/en/',
+      description: SITE_DESC_EN,
       themeConfig: {
         nav: [
           { text: 'Home', link: '/en/' },
           { text: 'Tutorial', link: '/en/tutorial/README' },
+          { text: 'Templates', link: '/en/templates/README' },
           { text: 'Cases', link: '/en/cases/README' },
-          { text: 'GitHub', link: 'https://github.com/study8677/awesome-architecture' },
         ],
         sidebar: {
+          '/en/tutorial/': [
+            { text: '📚 Foundations', items: enTutorial },
+            { text: '🚀 Advanced', items: enTutorialAdvanced },
+            { text: '🎯 Practice', items: enTutorialPractice },
+            { text: '🤝 AI-collaborative', items: enTutorialCollab },
+            { text: '🧰 Technology Stack Selection', items: enTutorialStack },
+            { text: '🧠 Foundation Model Training Decisions', items: enTutorialTraining },
+          ],
+          '/en/templates/': [
+            { text: '🗺️ Architecture Templates', items: [{ text: 'Templates overview', link: '/en/templates/README' }] },
+            { text: '🗺️ Classic / General', items: enCommon },
+            { text: '🤖 AI-native', items: enAI },
+            { text: '🦾 AI Coding & Autonomous Agents', items: enAgent },
+            { text: '📜 System Prompt Architecture', items: enPrompt },
+            { text: '🏭 Industrial / Embedded', items: enIndustrial },
+          ],
           '/en/cases/': [
             { text: '🧪 Cases', items: enCases },
           ],
           '/en/': [
-            {
-              text: '📚 Tutorial · Foundations',
-              items: [
-                { text: 'Overview', link: '/en/tutorial/README' },
-                { text: '01 · Why architecture comes first', link: '/en/tutorial/01-为什么先有架构思维' },
-                { text: "02 · The architect's thinking framework", link: '/en/tutorial/02-架构师的思考框架' },
-                { text: '03 · Reading & drawing diagrams', link: '/en/tutorial/03-读懂与画好架构图' },
-                { text: '04 · Ten core patterns', link: '/en/tutorial/04-十大核心架构模式' },
-                { text: '05 · Data & state', link: '/en/tutorial/05-数据与状态' },
-                { text: '06 · Quality attributes & trade-offs', link: '/en/tutorial/06-质量属性与取舍' },
-                { text: '07 · Designing from 0 to 1', link: '/en/tutorial/07-从0到1设计一个系统' },
-                { text: '08 · ADRs & evolution', link: '/en/tutorial/08-架构决策记录与演进' },
-                { text: '09 · Architectural taste', link: '/en/tutorial/09-架构品味' },
-              ],
-            },
-            {
-              text: '🚀 Tutorial · Advanced',
-              collapsed: true,
-              items: [
-                { text: '10 · Distributed systems: hard truths', link: '/en/tutorial/10-分布式系统的硬道理' },
-                { text: '11 · The engineering of data consistency', link: '/en/tutorial/11-数据一致性工程' },
-                { text: '12 · Designing for failure: resilience', link: '/en/tutorial/12-为失败而设计' },
-                { text: '13 · The mechanics of scale', link: '/en/tutorial/13-规模化的力学' },
-                { text: '14 · Evolving & splitting large systems', link: '/en/tutorial/14-演进与拆分大型系统' },
-                { text: '15 · Organization as architecture', link: '/en/tutorial/15-组织即架构' },
-                { text: '16 · Security & multi-tenancy', link: '/en/tutorial/16-安全与多租户架构' },
-                { text: '17 · Architecting in the age of LLMs', link: '/en/tutorial/17-大模型时代的架构判断' },
-              ],
-            },
-            {
-              text: '🎯 Tutorial · Practice',
-              collapsed: true,
-              items: [
-                { text: '18 · Reading the map: deconstruct unfamiliar systems', link: '/en/tutorial/18-读地图用框架拆解陌生系统' },
-                { text: '19 · Full design walkthrough: medium complexity', link: '/en/tutorial/19-完整设计演练中等复杂度系统' },
-                { text: '20 · Evolution playbook: MVP → scale', link: '/en/tutorial/20-演进剧本MVP到规模化' },
-                { text: '21 · Splitting & migration in practice', link: '/en/tutorial/21-拆分与迁移实战' },
-                { text: '22 · AI-native system design', link: '/en/tutorial/22-AI原生系统设计' },
-              ],
-            },
-            {
-              text: '🤝 Tutorial · AI-collaborative',
-              collapsed: true,
-              items: [
-                { text: '23 · Spec as architecture: constraints for AI', link: '/en/tutorial/23-规格即架构约束怎么写给AI' },
-                { text: '24 · Review checklist: what AI output omits by default', link: '/en/tutorial/24-审查清单AI产出默认缺什么' },
-                { text: '25 · Eval-driven: bake "good enough" into architecture', link: '/en/tutorial/25-评测驱动把够好写进架构' },
-                { text: '26 · Collaboration decision tree: when to vibe, when to spec-first', link: '/en/tutorial/26-协作决策树何时vibe何时spec-first' },
-              ],
-            },
-            {
-              text: '🧰 Tutorial · Technology Stack Selection',
-              collapsed: true,
-              items: [
-                { text: '27 · Languages & backend frameworks', link: '/en/tutorial/27-编程语言与后端框架选型' },
-                { text: '28 · Databases & storage', link: '/en/tutorial/28-数据库与存储选型' },
-                { text: '29 · Cache, queues & events', link: '/en/tutorial/29-缓存消息队列与事件系统选型' },
-                { text: '30 · APIs & service communication', link: '/en/tutorial/30-API与服务通信选型' },
-                { text: '31 · Cloud native & deployment', link: '/en/tutorial/31-云原生与部署平台选型' },
-                { text: '32 · Observability & reliability', link: '/en/tutorial/32-可观测性与可靠性技术栈选型' },
-                { text: '33 · AI infrastructure', link: '/en/tutorial/33-AI基础设施技术栈选型' },
-                { text: '34 · Technology selection decision tree', link: '/en/tutorial/34-技术选型决策树' },
-              ],
-            },
-            {
-              text: '🧠 Special Topic · Foundation Model Training Decisions',
-              collapsed: false,
-              items: enTutorialTraining,
-            },
-            {
-              text: '🧪 Cases',
-              collapsed: false,
-              items: enCases,
-            },
-            {
-              text: '🗺️ Templates · Classic / General',
-              collapsed: true,
-              items: [
-                { text: 'AI Chat Product', link: '/en/templates/ai-chat-product/README' },
-                { text: 'Browser Extension', link: '/en/templates/browser-extension/README' },
-                { text: 'Standard Web App', link: '/en/templates/standard-web-app/README' },
-                { text: 'Mobile App', link: '/en/templates/mobile-app/README' },
-                { text: 'E-commerce Platform', link: '/en/templates/ecommerce-platform/README' },
-                { text: 'Social Feed', link: '/en/templates/social-feed/README' },
-                { text: 'Video Streaming', link: '/en/templates/video-streaming/README' },
-                { text: 'Realtime Chat', link: '/en/templates/realtime-chat/README' },
-                { text: 'URL Shortener', link: '/en/templates/url-shortener/README' },
-                { text: 'Payment System', link: '/en/templates/payment-system/README' },
-                { text: 'Search Engine', link: '/en/templates/search-engine/README' },
-                { text: 'Ride-Hailing', link: '/en/templates/ride-hailing/README' },
-                { text: 'Collaborative Doc', link: '/en/templates/collaborative-doc/README' },
-                { text: 'Cloud Storage', link: '/en/templates/cloud-storage/README' },
-                { text: 'Notification System', link: '/en/templates/notification-system/README' },
-                { text: 'Online Ticketing', link: '/en/templates/online-ticketing/README' },
-              ],
-            },
-            {
-              text: '🤖 Templates · AI-native',
-              collapsed: true,
-              items: [
-                { text: 'AI Gateway / Relay', link: '/en/templates/ai-gateway/README' },
-                { text: 'RAG Knowledge Base', link: '/en/templates/rag-knowledge-base/README' },
-                { text: 'AI Agent / Workflow', link: '/en/templates/ai-agent-platform/README' },
-                { text: 'Inference Serving', link: '/en/templates/inference-serving/README' },
-                { text: 'Vector Database', link: '/en/templates/vector-database/README' },
-              ],
-            },
-            {
-              text: '🦾 Templates · AI Coding & Autonomous Agents',
-              collapsed: true,
-              items: [
-                { text: 'Claude Code', link: '/en/templates/claude-code/README' },
-                { text: 'OpenAI Codex', link: '/en/templates/codex/README' },
-                { text: 'OpenClaw (the lobster)', link: '/en/templates/openclaw/README' },
-                { text: 'Hermes', link: '/en/templates/hermes/README' },
-              ],
-            },
-            {
-              text: '📜 System Prompt Architecture',
-              collapsed: true,
-              items: [
-                { text: 'System Prompt Architecture', link: '/en/templates/system-prompt-architecture/README' },
-              ],
-            },
-            {
-              text: '🏭 Templates · Industrial / Embedded',
-              collapsed: true,
-              items: [
-                { text: 'Embedded Device Firmware', link: '/en/templates/embedded-device/README' },
-                { text: 'IoT Device Platform', link: '/en/templates/iot-platform/README' },
-                { text: 'Industrial Edge / SCADA', link: '/en/templates/industrial-edge/README' },
-                { text: 'Automotive E/E', link: '/en/templates/automotive-ee/README' },
-                { text: 'Robotics System', link: '/en/templates/robotics/README' },
-              ],
-            },
+            { text: '📚 Tutorial · Foundations', items: enTutorial },
+            { text: '🚀 Tutorial · Advanced', collapsed: true, items: enTutorialAdvanced },
+            { text: '🎯 Tutorial · Practice', collapsed: true, items: enTutorialPractice },
+            { text: '🤝 Tutorial · AI-collaborative', collapsed: true, items: enTutorialCollab },
+            { text: '🧰 Tutorial · Technology Stack Selection', collapsed: true, items: enTutorialStack },
+            { text: '🧠 Special Topic · Foundation Model Training Decisions', collapsed: false, items: enTutorialTraining },
+            { text: '🧪 Cases', collapsed: false, items: enCases },
+            { text: '🗺️ Templates · Classic / General', collapsed: true, items: enCommon },
+            { text: '🤖 Templates · AI-native', collapsed: true, items: enAI },
+            { text: '🦾 Templates · AI Coding & Autonomous Agents', collapsed: true, items: enAgent },
+            { text: '📜 System Prompt Architecture', collapsed: true, items: enPrompt },
+            { text: '🏭 Templates · Industrial / Embedded', collapsed: true, items: enIndustrial },
           ],
         },
         outline: { label: 'On this page', level: [2, 3] },

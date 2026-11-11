@@ -9,7 +9,7 @@
 
 RAG (Retrieval-Augmented Generation) = **letting the large model take an open-book exam**.
 
-It doesn't retrain the model. Instead, at the very moment the user asks a question, it **retrieves the relevant materials from your knowledge base on the fly and stuffs them into the prompt**, so the model "answers while looking at the materials." In essence, it's **a search engine stitched onto a large model**: [search](https://github.com/study8677/awesome-architecture/blob/main/templates/search-engine/README.md) is responsible for "finding the right materials," and the model is responsible for "organizing the materials into an answer."
+It doesn't retrain the model. Instead, at the very moment the user asks a question, it **retrieves the relevant materials from your knowledge base on the fly and stuffs them into the prompt**, so the model "answers while looking at the materials." In essence, it's **a search engine stitched onto a large model**: [search](../search-engine/README.md) is responsible for "finding the right materials," and the model is responsible for "organizing the materials into an answer."
 
 ## 2. The Business Essence: What Problem It Solves
 
@@ -78,8 +78,8 @@ Typical scenarios: enterprise knowledge-base Q&A, intelligent customer service, 
 - **Document parsing / loading**: extracts clean text (including tables and layout) from documents of every format. *Why it's needed*: garbage input drags everything downstream straight down; parse quality is the invisible foundation.
 - **Chunker**: splits long documents into small chunks suited to both retrieval and feeding the model. *Why it's needed*: chunks too big bring noise, chunks too small lose context — chunking directly drives retrieval quality (see Decision 2).
 - **Embedding model**: turns text chunks into vectors. *Why it's needed*: vectors are the basis of "semantic retrieval."
-- **Vector store**: stores chunk vectors + metadata and runs similarity search. *Why it's needed*: this is RAG's storage foundation — see the [Vector Database template](https://github.com/study8677/awesome-architecture/blob/main/templates/vector-database/README.md).
-- **Retriever + reranker**: first recall broadly (vector + keyword), then rerank to pick the most relevant. *Why it's needed*: the two-stage "recall + rerank" shares its lineage with the [search engine](https://github.com/study8677/awesome-architecture/blob/main/templates/search-engine/README.md).
+- **Vector store**: stores chunk vectors + metadata and runs similarity search. *Why it's needed*: this is RAG's storage foundation — see the [Vector Database template](../vector-database/README.md).
+- **Retriever + reranker**: first recall broadly (vector + keyword), then rerank to pick the most relevant. *Why it's needed*: the two-stage "recall + rerank" shares its lineage with the [search engine](../search-engine/README.md).
 - **Context assembly + LLM**: splices the question and retrieved fragments into a prompt and generates an answer with citations. *Why it's needed*: this is the "generation" link; citations make the answer traceable.
 
 ## 6. Key Data Flows
@@ -110,8 +110,8 @@ Core entities: `document` ─ `chunk (text + vector + metadata + source)`.
 
 | Data | Storage Type | Why |
 |---|---|---|
-| Chunk vectors + metadata | Vector store | Must search by semantic similarity — see [Vector Database](https://github.com/study8677/awesome-architecture/blob/main/templates/vector-database/README.md) |
-| Keyword / full-text index | Search engine | The keyword leg of hybrid retrieval — see [Search Engine](https://github.com/study8677/awesome-architecture/blob/main/templates/search-engine/README.md) |
+| Chunk vectors + metadata | Vector store | Must search by semantic similarity — see [Vector Database](../vector-database/README.md) |
+| Keyword / full-text index | Search engine | The keyword leg of hybrid retrieval — see [Search Engine](../search-engine/README.md) |
 | Original documents | Object storage | Large, immutable, fetched by ID for display |
 | Document / chunk metadata | Relational | Permissions, source, version |
 
@@ -140,15 +140,15 @@ Core entities: `document` ─ `chunk (text + vector + metadata + source)`.
 
 ## 9. Scaling and Bottlenecks
 
-- **First bottleneck: growing vector scale.** → Fix: shard + replicate the vector store — see [Vector Database](https://github.com/study8677/awesome-architecture/blob/main/templates/vector-database/README.md).
+- **First bottleneck: growing vector scale.** → Fix: shard + replicate the vector store — see [Vector Database](../vector-database/README.md).
 - **Second bottleneck: retrieval latency.** → Fix: tune the ANN index, cache hot queries, and rerank only a small set of candidates.
 - **Third bottleneck: embedding cost (massive docs / frequent updates).** → Fix: batch vectorization, incremental updates (recompute only the changed chunks), caching.
 - **Fourth bottleneck: multiple knowledge bases / multi-tenancy.** → Fix: isolate by knowledge base / tenant with namespaces + filter by metadata at retrieval time.
 
 ## 10. Security and Compliance Essentials
 
-- 🔴 **Retrieved content is untrusted input**: a retrieved document fragment may hide a prompt injection like "Ignore the instructions above…" — treat it as untrusted text. It's the same pit as Section 10 of [AI Chat Product](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-chat-product/README.md).
-- **Permission filtering**: a user may only retrieve documents **they have permission for**; filtering must take effect at the retrieval stage, never "retrieve first, then hide" (same as [Search Engine](https://github.com/study8677/awesome-architecture/blob/main/templates/search-engine/README.md)).
+- 🔴 **Retrieved content is untrusted input**: a retrieved document fragment may hide a prompt injection like "Ignore the instructions above…" — treat it as untrusted text. It's the same pit as Section 10 of [AI Chat Product](../ai-chat-product/README.md).
+- **Permission filtering**: a user may only retrieve documents **they have permission for**; filtering must take effect at the retrieval stage, never "retrieve first, then hide" (same as [Search Engine](../search-engine/README.md)).
 - **Private-data leakage**: knowledge bases often contain sensitive materials; do tenant isolation and encryption in transit / at rest.
 - **Source trustworthiness**: citations must point back to a real source, to prevent "fabricated citations."
 
@@ -167,12 +167,12 @@ Core entities: `document` ─ `chunk (text + vector + metadata + source)`.
 |---|---|---|---|
 | **MVP** | A handful of documents | Use an off-the-shelf framework (**LlamaIndex / Dify / RAGFlow**), fixed-size chunking + pure vector retrieval, just get Q&A working | Validate whether the "retrieve + answer" pipeline holds up at all |
 | **Growth** | Knowledge base at scale | Hybrid retrieval + reranking, semantic chunking, citation traceability, permission filtering, and **establish retrieval-quality evaluation** | Push up recall / precision, control cost |
-| **Maturity** | Massive / multi-tenant | Context-enriched retrieval, large-scale vector-store sharding, continuous retrieval-quality evaluation, Agentic RAG (let an [Agent](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-agent-platform/README.md) retrieve over multiple rounds) | Retrieval quality, scale, cost, observability |
+| **Maturity** | Massive / multi-tenant | Context-enriched retrieval, large-scale vector-store sharding, continuous retrieval-quality evaluation, Agentic RAG (let an [Agent](../ai-agent-platform/README.md) retrieve over multiple rounds) | Retrieval quality, scale, cost, observability |
 
 ## 13. Reusable Takeaways
 
 - 💡 **The "open-book exam" mindset**: rather than making the system "memorize" everything (fine-tuning / a bigger model), make it "know how to look things up" (retrieval). Lookup-able, updatable, traceable — often a better deal than rote memorization.
-- 💡 **The two-stage "recall + rerank" funnel** shares its exact lineage with the [search engine](https://github.com/study8677/awesome-architecture/blob/main/templates/search-engine/README.md) — broad first, then precise, a universal paradigm for "picking the few out of the many."
+- 💡 **The two-stage "recall + rerank" funnel** shares its exact lineage with the [search engine](../search-engine/README.md) — broad first, then precise, a universal paradigm for "picking the few out of the many."
 - 💡 **Quality is decided by the weakest link**: parsing, chunking, retrieval, reranking — if any one link is feeble, it drags down the whole. Find the weakest link and optimize it first.
 - 💡 **Any external content that re-enters the model is untrusted input** — RAG retrieval results are no exception.
 

@@ -74,7 +74,7 @@ But industrial economics differ from the internet's: **one hour of downtime = re
 
 ## 5. Component Responsibilities
 
-- **Southbound protocol adapters**: one plugin per protocol, handling acquisition and (controlled) writes. *Why it's needed*: heterogeneous protocols are industry's fate; plugins let you "onboard a new device type" without touching the core — same move as the multi-vendor adapters in the [AI gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-gateway/README.md).
+- **Southbound protocol adapters**: one plugin per protocol, handling acquisition and (controlled) writes. *Why it's needed*: heterogeneous protocols are industry's fate; plugins let you "onboard a new device type" without touching the core — same move as the multi-vendor adapters in the [AI gateway](../ai-gateway/README.md).
 - **Unified data model**: translates "register 40001 = 2350" into "Furnace 3 temperature = 235.0 °C". *Why it's needed*: without a semantic layer, every application above must know every device's register map — which means you have no platform at all.
 - **Edge rule engine**: threshold alarms, operational-level response suggestions, data filtering and downsampling — all executed locally. *Why it's needed*: this is where real-time response and offline autonomy land; it is the "little brain" — not clever, but fast, and independent of the big brain. **Keep the boundary clear**: safety interlocks / emergency shutdown belong to the PLC and the Safety Instrumented System (SIS — safety-certified, fail-safe by design); the edge rule engine only does non-safety alarms and process hints.
 - **Local cache + store-and-forward**: time-series data lands locally first, is pushed north in batches, and resumes after outages. *Why it's needed*: the implementation of "no data loss"; losing the uplink is a monthly event in a factory.
@@ -135,7 +135,7 @@ Core entities: `device / asset tree` (site → line → device → measurement p
 |---|---|---|
 | Asset tree / tag table | Relational (one copy at the edge, one in the cloud) | Structured, rarely changes, the root of all semantics |
 | Telemetry time series (edge) | Embedded time-series DB / ring storage | Local buffer is finite; rolls over by retention policy |
-| Telemetry time series (cloud) | Time-series DB + cold archive | Long-term trends, cross-site analytics — same as the [IoT platform](https://github.com/study8677/awesome-architecture/blob/main/templates/iot-platform/README.md) |
+| Telemetry time series (cloud) | Time-series DB + cold archive | Long-term trends, cross-site analytics — same as the [IoT platform](../iot-platform/README.md) |
 | Alarms / control audit | Relational, append-only | Incident traceability and compliance — not a single record may go missing |
 
 ## 8. Key Architecture Decisions & Trade-offs ⭐
@@ -197,7 +197,7 @@ Industrial scaling = **number of sites × device heterogeneity × years in servi
 
 - 💡 **"Interpreter + unified model" is the universal answer to heterogeneous legacy systems**: normalize the semantics first, then talk about upper-layer applications — integrating with an old core-banking system or a hospital HIS is the same tactic.
 - 💡 **Split edge vs. center by "does being late cause harm"**: real-time backstops sink down, clever decisions float up — CDN edge computing and retail-store systems follow the same logic.
-- 💡 **Store-and-forward is the standard stance for weak-network collaboration**: land locally first, backfill later — same as the offline-first approach in the [mobile app](https://github.com/study8677/awesome-architecture/blob/main/templates/mobile-app/README.md) template.
+- 💡 **Store-and-forward is the standard stance for weak-network collaboration**: land locally first, backfill later — same as the offline-first approach in the [mobile app](../mobile-app/README.md) template.
 - 💡 **Gate every operation that "writes to the physical world" layer by layer**: whitelist + approval + final validation at the executing side — universal for any system with physical consequences (payments, healthcare, robotics).
 - 💡 **When two systems with opposite value systems must connect, the boundary must be narrow, controlled, and audited**: the stability camp and the iteration camp cannot live together — you can only build a border crossing.
 

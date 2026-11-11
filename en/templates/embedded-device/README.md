@@ -9,7 +9,7 @@
 
 Embedded firmware = **a tiny operating system plus a business state machine, running where "resources are locked down and errors have nowhere to escape."**
 
-When a cloud program crashes you restart, scale out, roll back; firmware runs inside the lock on a user's front door — **a crash means the door won't open**. All of its architectural craft goes into three things: **layering to isolate hardware differences, state machines to tame concurrency, and sealing off the "failed upgrade" path for good**. It is the most extreme version of [designing for failure](https://github.com/study8677/awesome-architecture/blob/main/tutorial/12-为失败而设计.md) — because here there isn't even a "human reboot" to fall back on.
+When a cloud program crashes you restart, scale out, roll back; firmware runs inside the lock on a user's front door — **a crash means the door won't open**. All of its architectural craft goes into three things: **layering to isolate hardware differences, state machines to tame concurrency, and sealing off the "failed upgrade" path for good**. It is the most extreme version of [designing for failure](../../tutorial/12-为失败而设计.md) — because here there isn't even a "human reboot" to fall back on.
 
 ## 2. Business Essence: What Problem Does It Solve?
 
@@ -130,7 +130,7 @@ Core data: `firmware image`; `device config` (keys, calibration parameters, user
 | Firmware image | Dedicated A/B Flash slots | The physical basis of atomic switching and rollback on failure |
 | Device config | Small Flash partition, **dual copies + CRC** | Power loss mid-write must not lose the config; if one copy corrupts, the other survives |
 | Runtime logs | RAM ring buffer + key events flushed to Flash | Flash has a wear limit (tens of thousands of cycles) — you cannot write everything to it |
-| Pending-report data | RAM queue (optional Flash overflow area) | Buffer while offline, catch up when connectivity returns — offline-first, same as the [mobile app](https://github.com/study8677/awesome-architecture/blob/main/templates/mobile-app/README.md) |
+| Pending-report data | RAM queue (optional Flash overflow area) | Buffer while offline, catch up when connectivity returns — offline-first, same as the [mobile app](../mobile-app/README.md) |
 
 > Flash is not a hard disk: **it wears out, writes by page, erases by block, and corrupts on power loss.** Every persistence design must answer "what happens if power dies halfway through a write?"
 
@@ -161,7 +161,7 @@ Core data: `firmware image`; `device config` (keys, calibration parameters, user
 Embedded "scale" is not traffic — it's **device count × hardware revisions × years in the field**:
 
 - **First bottleneck: field problems you cannot investigate.** 0.1% anomalies across 100,000 units = 100 angry users, and without logs it's a cold case. → Fix: black box + automatic crash-context upload + a remote diagnostics channel.
-- **Second bottleneck: one OTA push takes down a whole cohort.** → Fix: staged rollout (1% → 10% → 100%) + a circuit breaker on upgrade failure rate + an observation window per batch — same as batch distribution in the [IoT platform](https://github.com/study8677/awesome-architecture/blob/main/templates/iot-platform/README.md).
+- **Second bottleneck: one OTA push takes down a whole cohort.** → Fix: staged rollout (1% → 10% → 100%) + a circuit breaker on upgrade failure rate + an observation window per batch — same as batch distribution in the [IoT platform](../iot-platform/README.md).
 - **Third bottleneck: SKU explosion, the firmware matrix spins out of control.** → Fix: HAL + config tables converge onto a single firmware; the production line uses one shared factory-test firmware.
 - **Fourth bottleneck: Flash wear runs out (5 years into deployment).** → Fix: wear leveling, reduced log frequency, and an erase-cycle budget computed for a 10-year life from day one.
 
@@ -192,8 +192,8 @@ Embedded "scale" is not traffic — it's **device count × hardware revisions ×
 
 ## 13. Reusable Takeaways
 
-- 💡 **The essence of a HAL is "locking your most unstable dependency into your thinnest layer"** — true for chips, and just as true for third-party APIs (same as the adapters in the [AI gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-gateway/README.md)).
-- 💡 **The state machine is the universal weapon against "unexpected state combinations"**: explicitly enumerated states are far more testable than if-else scattered everywhere — payment order transitions (see the [payment system](https://github.com/study8677/awesome-architecture/blob/main/templates/payment-system/README.md)) are the same move.
+- 💡 **The essence of a HAL is "locking your most unstable dependency into your thinnest layer"** — true for chips, and just as true for third-party APIs (same as the adapters in the [AI gateway](../ai-gateway/README.md)).
+- 💡 **The state machine is the universal weapon against "unexpected state combinations"**: explicitly enumerated states are far more testable than if-else scattered everywhere — payment order transitions (see the [payment system](../payment-system/README.md)) are the same move.
 - 💡 **A/B dual slots = the embedded edition of blue-green deployment**: any system where "an update can kill" is worth paying double the storage for "return to the previous version at any time."
 - 💡 **"The ISR only posts messages, never works" = separating receipt from processing**: the same peak-shaving idea as web systems where "the entry point only enqueues, workers consume at their own pace."
 - 💡 **Hard resource constraints force good design**: where memory is counted in KB there is no "pile it on now, optimize later"; that discipline of "budgeted architecture" benefits resource-rich systems just as much.

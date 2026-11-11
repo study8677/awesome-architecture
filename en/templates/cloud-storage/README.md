@@ -136,14 +136,14 @@ Core entities: `file / folder (metadata: path, version, block manifest)`; `block
 **Decision 4: When multiple devices edit the same file offline, what about conflicts?**
 - Whoever syncs later overwrites the earlier one: simple, but **it loses data**.
 - When a conflict is detected, **keep both versions** (create a "conflicted copy") and let the user decide.
-- **Leaning**: rather keep a conflicted copy than silently overwrite. **Same as [collaborative documents](https://github.com/study8677/awesome-architecture/blob/main/templates/collaborative-doc/README.md): preserve, don't overwrite.**
+- **Leaning**: rather keep a conflicted copy than silently overwrite. **Same as [collaborative documents](../collaborative-doc/README.md): preserve, don't overwrite.**
 
 ## 9. Scaling & Bottlenecks
 
 - **First bottleneck: the metadata service swells with users and file counts.** → Fix: shard by user (one user's file tree lives in one place, so queries don't cross shards).
 - **Second bottleneck: content storage scale.** → Fix: object storage scales near-infinitely by nature; pair it with dedup and hot/cold tiering to squeeze cost.
-- **Third bottleneck: the fan-out of sync notifications** (one change must notify all of a user's devices). → Fix: pub-sub + persistent connections, see the [notification system template](https://github.com/study8677/awesome-architecture/blob/main/templates/notification-system/README.md).
-- **Fourth bottleneck: a hot file shared and downloaded en masse.** → Fix: CDN caching and distribution, see the [video streaming template](https://github.com/study8677/awesome-architecture/blob/main/templates/video-streaming/README.md).
+- **Third bottleneck: the fan-out of sync notifications** (one change must notify all of a user's devices). → Fix: pub-sub + persistent connections, see the [notification system template](../notification-system/README.md).
+- **Fourth bottleneck: a hot file shared and downloaded en masse.** → Fix: CDN caching and distribution, see the [video streaming template](../video-streaming/README.md).
 
 ## 10. Security & Compliance Essentials
 

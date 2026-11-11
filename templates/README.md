@@ -71,7 +71,7 @@
 
 ## 每个模板都长一样:统一的 14 段结构
 
-我们刻意让所有模板遵循**同一套结构**(见 [`_TEMPLATE.md`](_TEMPLATE.md))。这样做有两个好处:
+我们刻意让所有模板遵循**同一套结构**(见 [`_TEMPLATE.md`](https://github.com/study8677/awesome-architecture/blob/main/templates/_TEMPLATE.md))。这样做有两个好处:
 
 1. **越读越快**:你第一次读要从头看,第十次读就能直接跳到「关键决策」那一节。
 2. **结构本身就是教学**:这 14 段,正好就是你设计任何系统时该依次问自己的 14 类问题。
@@ -113,7 +113,7 @@
 
 ## 想贡献一个新模板?
 
-1. 复制 [`_TEMPLATE.md`](_TEMPLATE.md) 到一个新目录,比如 `templates/your-system/README.md`。
+1. 复制 [`_TEMPLATE.md`](https://github.com/study8677/awesome-architecture/blob/main/templates/_TEMPLATE.md) 到一个新目录,比如 `templates/your-system/README.md`。
 2. 把 14 段逐一填满(含给出**真实**的参考原型链接),**坚持只讲架构**——一旦你开始写「用 XX 语言的 YY 库」,就停下来问自己:这是架构决策,还是实现细节?
 3. 图用 ASCII 画(纯文本、到处都能看、永不失效)。
 4. 在上面的清单表格里加一行。

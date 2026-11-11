@@ -9,7 +9,7 @@
 
 An IoT platform = **a massive long-connection gateway + a device identity system + a "device shadow" mirror**.
 
-It looks like [real-time chat](https://github.com/study8677/awesome-architecture/blob/main/templates/realtime-chat/README.md) (both are massive long connections), but the party on the other end changes from "a person" to "a battery-powered device with flaky signal that may sleep for three hours at a stretch." The core difficulty shifts from "fast messages" to three things: **device identity must be trustworthy, offline is the norm not the exception, and one bad command can brick a batch of real hardware.**
+It looks like [real-time chat](../realtime-chat/README.md) (both are massive long connections), but the party on the other end changes from "a person" to "a battery-powered device with flaky signal that may sleep for three hours at a stretch." The core difficulty shifts from "fast messages" to three things: **device identity must be trustworthy, offline is the norm not the exception, and one bad command can brick a batch of real hardware.**
 
 ## 2. Business Essence: What Problem Does It Solve?
 
@@ -33,7 +33,7 @@ Building it yourself means handling millions of long connections, reconnection s
 |---|---|---|
 | **Connection scale** | Millions to hundreds of millions of concurrent long connections | Always-powered devices hold their connections 24/7 while battery devices come online intermittently — the platform must serve both |
 | **Upstream throughput** | Millions of telemetry points per second | Sensors report numbers tirelessly |
-| **Command reachability** | Seconds when online, catch-up delivery when offline | If a "remote unlock / shutdown" cannot get through, the business grinds to a halt (safety interlocks must be handled locally on the device — see [embedded device firmware](https://github.com/study8677/awesome-architecture/blob/main/templates/embedded-device/README.md)) |
+| **Command reachability** | Seconds when online, catch-up delivery when offline | If a "remote unlock / shutdown" cannot get through, the business grinds to a halt (safety interlocks must be handled locally on the device — see [embedded device firmware](../embedded-device/README.md)) |
 | **Weak-network tolerance** | Drop-and-reconnect is the norm | 2G / NB-IoT / battery devices — the link is inherently unstable |
 
 **Key constraints (boundaries you cannot cross):**
@@ -78,11 +78,11 @@ Building it yourself means handling millions of long connections, reconnection s
 
 - **MQTT access gateway**: maintains massive long connections; auth, keep-alive, ACL. *Why it's needed*: connection management is the platform's most expensive asset. Note that a long-connection gateway is **inherently stateful** (connections, sessions, and subscription relationships all live on it) — externalize session and routing state to shared storage so the gateway instances themselves are replaceable; that is what makes horizontal scaling possible. Rolling upgrades must also kick off and drain connections in batches, or you are manufacturing your own reconnection storm.
 - **Device identity / registry**: each device's certificate / key and lifecycle (activate / disable / deregister). *Why it's needed*: device identity is the root of all security; only "single-device revocation" lets you deal with a compromised device.
-- **Message bus**: the buffer between access layer and business layer. *Why it's needed*: the flood of millions of devices reporting at once must never hit the database directly — enqueue first, the same peak-smoothing idea as the [notification system](https://github.com/study8677/awesome-architecture/blob/main/templates/notification-system/README.md).
+- **Message bus**: the buffer between access layer and business layer. *Why it's needed*: the flood of millions of devices reporting at once must never hit the database directly — enqueue first, the same peak-smoothing idea as the [notification system](../notification-system/README.md).
 - **Device shadow (digital twin)**: the cloud keeps one JSON state per device: `reported` (what the device says) + `desired` (what the app wants). *Why it's needed*: see Decision 1 — it is the platform's single most important abstraction.
 - **Rule engine**: declarative configuration for logic like "temperature > 80 → alert + close the valve." *Why it's needed*: lets business teams process device data without writing code; this is where the platform's versatility comes from.
 - **Telemetry pipeline + time-series storage**: cleaning, downsampling, time-tiered storage. *Why it's needed*: telemetry is huge, queried by time, and almost never modified — a natural time-series workload.
-- **OTA distribution service**: manages firmware versions, staged pushes, upgrade success stats, failure circuit-breaking. *Why it's needed*: for a million devices, one all-at-once push is one giant gamble; staged rollout is the only responsible posture (for the device side, see [embedded device firmware](https://github.com/study8677/awesome-architecture/blob/main/templates/embedded-device/README.md)).
+- **OTA distribution service**: manages firmware versions, staged pushes, upgrade success stats, failure circuit-breaking. *Why it's needed*: for a million devices, one all-at-once push is one giant gamble; staged rollout is the only responsible posture (for the device side, see [embedded device firmware](../embedded-device/README.md)).
 
 ## 6. Key Data Flows
 
@@ -149,7 +149,7 @@ Core entities: `device` (identity, model, firmware version); `shadow` (desired /
 **Decision 3: Devices connect to the platform directly, or through an edge gateway?**
 - Direct: simple architecture — one connection, one identity per device.
 - Gateway proxy: BLE / Zigbee / wired sensors have no IP capability and can only hang off a gateway; the gateway can also pre-process locally and cache through outages.
-- **Leaning**: support both. **Sub-devices behind a gateway still get their own identity and shadow** (rather than the gateway "representing" them), otherwise swapping the gateway = resetting every sub-device — same as the southbound access in the [industrial edge gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/industrial-edge/README.md).
+- **Leaning**: support both. **Sub-devices behind a gateway still get their own identity and shadow** (rather than the gateway "representing" them), otherwise swapping the gateway = resetting every sub-device — same as the southbound access in the [industrial edge gateway](../industrial-edge/README.md).
 
 **Decision 4: Store all telemetry, or compute at the edge first?**
 - Everything to the cloud: complete data, plenty of hindsight insurance; but bandwidth and storage costs explode linearly with device count.
@@ -192,7 +192,7 @@ Core entities: `device` (identity, model, firmware version); `shadow` (desired /
 
 - 💡 **The "shadow" is a general pattern for unreliable participants**: give the flaky party an "always-online mirror," turning synchronous calls into state reconciliation — equally useful when integrating unstable third-party systems.
 - 💡 **Separating desired vs reported = declarative thinking**: the app declares "what it wants," the executor converges on its own — the same philosophy as Kubernetes desired state.
-- 💡 **Enqueue at the flood gate first**: the access layer only does "receive + authenticate + hand off," everything else goes async — same as the [notification system](https://github.com/study8677/awesome-architecture/blob/main/templates/notification-system/README.md).
+- 💡 **Enqueue at the flood gate first**: the access layer only does "receive + authenticate + hand off," everything else goes async — same as the [notification system](../notification-system/README.md).
 - 💡 **Staged rollout + circuit breaker is standard kit for any operation that "changes the real world in bulk"**: pushing firmware, sending marketing, changing configs — one and the same.
 - 💡 **Identity granularity sets the security ceiling**: only if you can revoke a single device do you lose only a single device.
 

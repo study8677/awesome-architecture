@@ -11,7 +11,7 @@ An AI gateway = **the API gateway + reverse proxy of the LLM era**. It produces 
 
 The problem it solves is dead simple. When your code is littered with "call OpenAI" here, "call Claude" there, "call DeepSeek" somewhere else — every provider's API is different, every provider goes down sometimes, and nobody can say how much money you've spent — that's when you need a middle layer to round up all these **cross-cutting concerns** (auth, rate limiting, billing, fault tolerance, observability) in one place.
 
-> It's exactly the **BFF / gateway** and **proxy** ideas from [04 · Architecture Patterns](https://github.com/study8677/awesome-architecture/blob/main/tutorial/04-十大核心架构模式.md), applied to the act of "calling a large model."
+> It's exactly the **BFF / gateway** and **proxy** ideas from [04 · Architecture Patterns](../../tutorial/04-十大核心架构模式.md), applied to the act of "calling a large model."
 
 ## 2. The Business Essence: What Problem It Solves
 
@@ -151,7 +151,7 @@ Core entities: `downstream user / key / quota`; `upstream provider / key pool`; 
 - **Multi-tenant isolation**: strictly isolate the quotas, data, and logs of different downstream users / teams.
 - **Abuse prevention**: rate limiting, anomalous-usage alerts, leaked-key detection.
 - **Content compliance**: as the choke point all traffic passes through, this is where you can wire in content moderation / guardrails uniformly.
-- **Prompt injection**: the gateway passes user content through and doesn't interpret it itself, but be aware that downstream models face injection risk (see Section 10 of the [AI Chat Product template](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-chat-product/README.md)).
+- **Prompt injection**: the gateway passes user content through and doesn't interpret it itself, but be aware that downstream models face injection risk (see Section 10 of the [AI Chat Product template](../ai-chat-product/README.md)).
 
 ## 11. Common Pitfalls / Anti-Patterns
 
@@ -175,7 +175,7 @@ Core entities: `downstream user / key / quota`; `upstream provider / key pool`; 
 - 💡 **A gateway / middle layer is the classic move for "centralizing cross-cutting concerns."** Auth, rate limiting, billing, observability, fault tolerance — rather than rewriting them in every app, round them up at one entry point.
 - 💡 **The adapter pattern hides provider differences**: one interface outward, N adapters inward. "Write once, call all" applies to any scenario "integrating multiple heterogeneous third parties."
 - 💡 **Failover = don't put all your eggs in one basket.** Any system that depends heavily on an external party that can go down should have a "primary fails, switch to backup" path.
-- 💡 **Caching is one of the biggest money-saving levers in an LLM system** — the same idea runs through the prompt / prefix caching in [AI Chat Product](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-chat-product/README.md) and [Inference Serving](https://github.com/study8677/awesome-architecture/blob/main/templates/inference-serving/README.md).
+- 💡 **Caching is one of the biggest money-saving levers in an LLM system** — the same idea runs through the prompt / prefix caching in [AI Chat Product](../ai-chat-product/README.md) and [Inference Serving](../inference-serving/README.md).
 
 ## 🎯 Quick Quiz
 

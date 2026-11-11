@@ -126,7 +126,7 @@ The "software-defined vehicle" flipped that landscape: **a car's differentiation
 3. Disagreement scenarios (new algorithm wanted to brake, human did not) →
    clip extracted and uploaded to the cloud
 4. Cloud trains the next version on real corner cases → OTA again → repeat
-   ── Same "shadow traffic" as in [Evolution & Splitting](https://github.com/study8677/awesome-architecture/blob/main/tutorial/14-演进与拆分大型系统.md),
+   ── Same "shadow traffic" as in [Evolution & Splitting](../../tutorial/14-演进与拆分大型系统.md),
       except the traffic is real roads
 ```
 
@@ -148,7 +148,7 @@ Core data: `signals` (live values on the bus: speed, pedal…); `fault codes (DT
 - Distributed (100+ ECUs): mature supply chain, small blast radius per failure; but scattershot software, harness explosion, OTA next to impossible.
 - Domain-centralized (one domain controller each for powertrain / body / cockpit / ADAS): software starts converging — the current mainstream.
 - Central compute + zonal controllers: fully centralized software, minimal harness, smoothest OTA; but it demands extreme software capability from the OEM, and single-point-of-failure protection (redundancy) must be done in full.
-- **Leaning**: the industry as a whole is evolving toward central compute, **but the pace depends on the organization's software capability** — an architecture ahead of its capability = disaster ([Organization Is Architecture](https://github.com/study8677/awesome-architecture/blob/main/tutorial/15-组织即架构.md) as manifested in the auto industry: the supplier relationships are the shape of the old architecture).
+- **Leaning**: the industry as a whole is evolving toward central compute, **but the pace depends on the organization's software capability** — an architecture ahead of its capability = disaster ([Organization Is Architecture](../../tutorial/15-组织即架构.md) as manifested in the auto industry: the supplier relationships are the shape of the old architecture).
 
 **Decision 2: How do you isolate the safety domain from the entertainment domain? ⭐**
 - Physical isolation (separate chips): the hardest boundary, easy to certify; expensive, and cross-domain communication is slow.
@@ -158,7 +158,7 @@ Core data: `signals` (live values on the bus: speed, pedal…); `fault codes (DT
 **Decision 3: OTA — push full images, or delta + staged rollout?**
 - Full images: simple and reliable, but one whole-vehicle upgrade is several GB — cellular data cost × a million cars.
 - Delta packages + staged rollout: saves 90% of the traffic; push to a thousand cars first, watch, then open the floodgates; the price is a complex version-combination matrix to manage.
-- **Leaning**: delta + staged rollout + failure-rate circuit breakers is the production standard, same OTA playbook as the [IoT platform](https://github.com/study8677/awesome-architecture/blob/main/templates/iot-platform/README.md) — except here "bricking" means a tow truck.
+- **Leaning**: delta + staged rollout + failure-rate circuit breakers is the production standard, same OTA playbook as the [IoT platform](../iot-platform/README.md) — except here "bricking" means a tow truck.
 
 **Decision 4: Upload all ADAS data, or trigger-based collection?**
 - Upload everything: the most complete data; but one car produces several TB a day, and the traffic and storage bills run into the hundreds of millions.
@@ -203,8 +203,8 @@ For a car, "scale" = number of models × fleet size × a 15-year lifecycle:
 - 💡 **Isolate by "consequence of failure," not by "functional module"**: the ASIL mixed-criticality isolation idea applies to any system where critical and non-critical workloads share a home (trading core vs marketing campaigns).
 - 💡 **Two kinds of traffic, two networks**: high bandwidth rides the high-throughput link, small-but-critical rides the deterministic link — the physical edition of "separate the control plane from the data plane."
 - 💡 **Shadow mode = validating a new version on real traffic for free**: observe first, compare the differences, then hand over authority — applicable to any high-risk replacement (risk models, recommendation algorithms).
-- 💡 **Failure needs a "safe state" to land in**: the limp-home-mode idea — where a degraded system comes to rest is designed, not left to luck ([Design for Failure](https://github.com/study8677/awesome-architecture/blob/main/tutorial/12-为失败而设计.md)).
-- 💡 **Software-hardware decoupling + configuration activation**: one software stack serving N hardware configurations — the endgame answer to SKU management (same as [embedded firmware](https://github.com/study8677/awesome-architecture/blob/main/templates/embedded-device/README.md) Decision 4).
+- 💡 **Failure needs a "safe state" to land in**: the limp-home-mode idea — where a degraded system comes to rest is designed, not left to luck ([Design for Failure](../../tutorial/12-为失败而设计.md)).
+- 💡 **Software-hardware decoupling + configuration activation**: one software stack serving N hardware configurations — the endgame answer to SKU management (same as [embedded firmware](../embedded-device/README.md) Decision 4).
 
 ## 🎯 Quick Quiz
 

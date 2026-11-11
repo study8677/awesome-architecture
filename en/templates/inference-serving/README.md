@@ -9,7 +9,7 @@
 
 Model inference serving = **a "throughput-squeezing machine" that revolves around the GPU**. Its entire mission is one sentence: **keep the GPU fed, fully utilized, and used economically.**
 
-It's actually a **zoomed-in close-up** of the "inference service" component from the [AI Chat Product template](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-chat-product/README.md). When you're no longer content to call someone else's API and want to run an open-source / private model yourself, this is the machine you face: the input is "model weights + a pile of prompts," the output is "a continuous stream of tokens," and the hardest thing in the middle is **keeping a GPU worth tens of thousands of dollars from idling for even a moment**.
+It's actually a **zoomed-in close-up** of the "inference service" component from the [AI Chat Product template](../ai-chat-product/README.md). When you're no longer content to call someone else's API and want to run an open-source / private model yourself, this is the machine you face: the input is "model weights + a pile of prompts," the output is "a continuous stream of tokens," and the hardest thing in the middle is **keeping a GPU worth tens of thousands of dollars from idling for even a moment**.
 
 ## 2. The Business Essence: What Problem It Solves
 
@@ -139,7 +139,7 @@ For this kind of system, the "data" mostly lives in **VRAM**, not in a database.
 **Decision 4: Self-host inference, or just call an API? (what an MVP should think through most) ⭐**
 - Call a provider's API: zero ops, pay-as-you-go, the fastest way to get started.
 - Self-host: use open-source / private models, data stays with you, and per-token gets cheaper at scale — but you have to raise GPUs and this whole complex system.
-- **Where to land**: **call an API first** (via an [AI Gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-gateway/README.md)), and only self-host when "the volume is large enough that self-hosting is more cost-effective" or "you must have a private / custom model."
+- **Where to land**: **call an API first** (via an [AI Gateway](../ai-gateway/README.md)), and only self-host when "the volume is large enough that self-hosting is more cost-effective" or "you must have a private / custom model."
 
 ## 9. Scaling and Bottlenecks
 
@@ -168,13 +168,13 @@ For this kind of system, the "data" mostly lives in **VRAM**, not in a database.
 
 | Stage | Scale | How to Set It Up (Specifics) | What to Worry About Now |
 |---|---|---|---|
-| **MVP** | Validating the idea | **Don't self-host!** Just call a model provider's API (via an [AI Gateway](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-gateway/README.md)). If you absolutely need a local / private model, stand up a single-card instance with vLLM / TGI | Validate the product first; don't start out burning GPU |
+| **MVP** | Validating the idea | **Don't self-host!** Just call a model provider's API (via an [AI Gateway](../ai-gateway/README.md)). If you absolutely need a local / private model, stand up a single-card instance with vLLM / TGI | Validate the product first; don't start out burning GPU |
 | **Growth** | Self-hosting at scale | Self-host **vLLM / SGLang**: turn on continuous batching + paged KV + prefix cache; quantize to save VRAM; multi-replica + load balancing | Squeeze single-card throughput and per-token cost to the optimum |
 | **Maturity** | Large models / high concurrency | Multi-GPU parallelism for large models, separate prefill/decode scheduling, multi-region GPU pools, model routing (mixing large and small models), autoscaling | Cost, capacity planning, disaster recovery, balancing quality and latency |
 
 ## 13. Reusable Takeaways
 
-- 💡 **First recognize the system's true "scarce resource," and architect around its utilization.** Here it's the GPU, so everything serves "don't let the GPU idle" — the same mindset as [AI Chat Product](https://github.com/study8677/awesome-architecture/blob/main/templates/ai-chat-product/README.md).
+- 💡 **First recognize the system's true "scarce resource," and architect around its utilization.** Here it's the GPU, so everything serves "don't let the GPU idle" — the same mindset as [AI Chat Product](../ai-chat-product/README.md).
 - 💡 **Batching is the lever for throughput.** Merging multiple requests into one computation is a universal efficiency move, from databases to GPUs.
 - 💡 **Be good at borrowing mature wisdom from other domains.** PagedAttention lifted the OS's "virtual-memory paging" wholesale to cure KV-cache fragmentation — good architecture is often "old ideas applied to new problems."
 - 💡 **Cache the things that are expensive to recompute.** The prefix cache reuses already-computed KV, equivalent to prompt caching — a universal money-saving trick.
