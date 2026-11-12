@@ -199,6 +199,7 @@ Core entities: `task / session`; `step trace`; `memory`; `tool definitions`; `ch
 - [langgenius/dify](https://github.com/langgenius/dify) — a visual LLM application / Agent workflow platform with built-in tools, RAG, and observability, great for rapid building.
 - [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) — an orchestration framework that models stateful, long-running Agents as a "graph," supporting durable execution and human-in-the-loop.
 - [langchain-ai/langchain](https://github.com/langchain-ai/langchain) — the most classic LLM application framework, one of the de facto standards for tool calling / memory / chained orchestration.
+- [yylo-dev/yylo](https://github.com/yylo-dev/yylo) — a command-line orchestrator for coding agents: typed tasks, validation, and merge boundaries in a dedicated git worktree, for receipt-backed repository changes.
 
 **📖 Engineering articles:**
 - [Anthropic: Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) — a must-read. It makes the "workflow vs Agent" boundary clear, along with the engineering philosophy of "keep it simple, add complexity only as needed."

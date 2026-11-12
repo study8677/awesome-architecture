@@ -194,6 +194,7 @@ Agent 平台 = **给大模型装上「手脚(工具)+ 记忆 + 一个行动循�
 - [langgenius/dify](https://github.com/langgenius/dify) — 可视化的 LLM 应用 / Agent 工作流平台,内置工具、RAG、可观测,适合快速搭建。
 - [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) — 用「图」建模有状态、长时运行 Agent 的编排框架,支持持久执行与 human-in-the-loop。
 - [langchain-ai/langchain](https://github.com/langchain-ai/langchain) — 最经典的 LLM 应用框架,工具调用 / 记忆 / 链式编排的事实标准之一。
+- [yylo-dev/yylo](https://github.com/yylo-dev/yylo) — 命令行编码 agent 编排器:把类型化任务、验证与合并边界放进专用 git worktree,面向有回执的仓库改动。
 
 **📖 工程文章:**
 - [Anthropic: Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) — 必读。讲清「工作流 vs Agent」的边界,以及「保持简单、按需增复杂度」的工程哲学。
